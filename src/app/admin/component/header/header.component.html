@@ -1,0 +1,53 @@
+<nav class="navbar navbar-light fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Sen Couture</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Sen Couture</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a href="#" class="nav-link" routerLinkActive="active" aria-current="page" routerLink="dashboard">
+              <i class="fas fa-clipboard"></i> <span class="ms-3">Dashboard</span></a>
+        </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" routerLinkActive="active" routerLink="user">
+              <i class="fas fa-person-booth"></i> <span class="ms-3">Users</span></a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" routerLinkActive="active" routerLink="couture">
+            <i class="fas fa-box"></i> <span class="ms-3">Couture</span></a>
+      </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" routerLinkActive="active" routerLink="setting">
+              <i class="fas fa-certificate"></i> <span class="ms-3">Setting</span></a>
+        </li>
+          <div class="dropdown pb-4 pt-5">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                <span class="d-none d-sm-inline mx-1">ADMIN</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+        </div>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-secondary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>
