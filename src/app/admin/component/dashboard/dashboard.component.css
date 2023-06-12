@@ -1,0 +1,19 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card{
+  max-width:12rem;
+  margin:auto;
+  min-width:9rem;
+}
+
+@media only screen and (max-width:770px){
+  .container{
+    display:column;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+  }
+}

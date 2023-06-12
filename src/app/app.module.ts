@@ -17,7 +17,7 @@ import { CoutureComponent } from './admin/component/couture/couture.component';
     DashboardComponent,
     UserComponent,
     SettingComponent,
-    CoutureComponent
+    CoutureComponent,
   ],
   imports: [
     BrowserModule,
