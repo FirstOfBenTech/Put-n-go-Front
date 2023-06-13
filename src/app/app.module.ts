@@ -6,18 +6,22 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './admin/component/header/header.component';
 import { DashboardComponent } from './admin/component/dashboard/dashboard.component';
-import { UserComponent } from './admin/component/user/user.component';
-import { SettingComponent } from './admin/component/setting/setting.component';
-import { CoutureComponent } from './admin/component/couture/couture.component';
+import { ClientComponent } from './admin/component/client/client.component';
+import { CommandeComponent } from './admin/component/commande/commande.component';
+import { StockComponent } from './admin/component/stock/stock.component';
+import { BoutiqueComponent } from './admin/component/boutique/boutique.component';
+import { MesboutiquesComponent } from './admin/component/mesboutiques/mesboutiques.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DashboardComponent,
-    UserComponent,
-    SettingComponent,
-    CoutureComponent,
+    ClientComponent,
+    CommandeComponent,
+    StockComponent,
+    BoutiqueComponent,
+    MesboutiquesComponent,
   ],
   imports: [
     BrowserModule,
