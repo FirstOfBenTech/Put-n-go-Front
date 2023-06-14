@@ -1,0 +1,33 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "prenom": "Omar",
+      "nom": "DIOP",
+      "numeroTel": 771233245,
+      "mesure": "23",
+      "id": 2
+    },
+    {
+      "prenom": "Fatou",
+      "nom": "Diallo",
+      "numeroTel": 977156262,
+      "mesure": "23",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -14,28 +14,28 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form [formGroup]="clientForm">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Prenom</span>
-            <input type="text" class="form-control" placeholder="Saisir le Prenom">
+            <input type="text" class="form-control" formControlName="prenom" placeholder="Saisir le Prenom">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Nom</span>
-            <input type="text" class="form-control" placeholder="Saisir le nom ">
+            <input type="text" class="form-control" formControlName="nom" placeholder="Saisir le nom ">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">N°Tel</span>
-            <input type="number" class="form-control" placeholder="Saisir le numero telephone">
+            <input type="number" class="form-control" formControlName="numeroTel" placeholder="Saisir le numero telephone">
           </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Mesure</span>
-            <input type="text" class="form-control" placeholder="Saisir le mesure">
+            <input type="text" class="form-control" formControlName="mesure" placeholder="Saisir le mesure">
         </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-success">Enregistrer</button>
+        <button type="button" class="btn btn-success" (click)="submitClient(this.clientForm.value)" [disabled]="clientForm.invalid">Enregistrer</button>
       </div>
     </div>
   </div>
@@ -58,31 +58,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>DIOP</td>
-        <td>Omar</td>
-        <td>771212112</td>
-        <td>32</td>
-        <td><button class="btn btn-primary">Consulter</button></td>
-        <td><button class="btn btn-danger">Supprimer</button></td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Thorson</td>
-        <td>Jacob</td>
-        <td>781122134</td>
-        <td>23</td>
-        <td><button class="btn btn-primary">Consulter</button></td>
-        <td><button class="btn btn-danger">Supprimer</button></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Kiry</td>
-        <td>Larry</td>
-        <td>763235167</td>
-        <td>20</td>
-        <td><button class="btn btn-primary">Consulter</button></td>
+      <tr *ngFor="let item of dataClient">
+        <td>{{item.id}}</td>
+        <td>{{item.nom}}</td>
+        <td>{{item.prenom}}</td>
+        <td>{{item.numeroTel}}</td>
+        <td>{{item.mesure}}</td>
+        <td><button class="btn btn-info">Modifier</button></td>
         <td><button class="btn btn-danger">Supprimer</button></td>
       </tr>
     </tbody>
