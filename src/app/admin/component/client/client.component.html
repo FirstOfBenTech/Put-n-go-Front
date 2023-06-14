@@ -1,6 +1,5 @@
-<h3 class="text-info">Gestions des Clients</h3>
-<h5>Creation d'un Client</h5>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<h4 class="mb-3">Gestions des Clients</h4>
+<button type="button" class="btn" style="background-color: #ff6e40;" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Ajouter un Client
 </button>
 
@@ -10,16 +9,33 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Ajouter Client</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <form action="">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Prenom</span>
+            <input type="text" class="form-control" placeholder="Saisir le Prenom">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Nom</span>
+            <input type="text" class="form-control" placeholder="Saisir le nom ">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">N°Tel</span>
+            <input type="number" class="form-control" placeholder="Saisir le numero telephone">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Mesure</span>
+            <input type="text" class="form-control" placeholder="Saisir le mesure">
+        </div>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Enregistrer</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-success">Enregistrer</button>
       </div>
     </div>
   </div>
@@ -27,7 +43,7 @@
 
 <!-----LISTER CLIENTS------------------>
 
-<h5>Lister les Clients</h5>
+<h5 class="mt-5 mb-4">Liste des Clients</h5>
 
 <div class="">
   <table class="table table-bordered border-danger table-info table-striped">

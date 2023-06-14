@@ -9,7 +9,7 @@ import { MesboutiquesComponent } from './admin/component/mesboutiques/mesboutiqu
 
 const routes: Routes = [
   {
-    path:'**',redirectTo:'dashboard',pathMatch:'full'
+    path:'',redirectTo:'client',pathMatch:'full'
   },
   {
     path:'dashboard',component:DashboardComponent
