@@ -1,0 +1,15 @@
+{
+  "posts": [
+    {
+      "prenom": "Alassane",
+      "nom": "Faye",
+      "numeroTel": 12333,
+      "mesure": "21",
+      "id": 1
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

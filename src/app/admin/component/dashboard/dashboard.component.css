@@ -4,16 +4,18 @@
   justify-content: center;
 }
 .card{
-  max-width:12rem;
+  max-width:11rem;
   margin:auto;
   min-width:9rem;
+  //background-color:#f5f0e1;
+}
+.btn-perso{
+  background-color:#ff6e40;
 }
 
 @media only screen and (max-width:770px){
   .container{
-    display:column;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
+    display:flex;
+    flex-wrap:wrap;
   }
 }

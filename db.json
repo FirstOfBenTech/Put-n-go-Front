@@ -1,11 +1,6 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
       "prenom": "Omar",
       "nom": "DIOP",
       "numeroTel": 771233245,
@@ -13,20 +8,21 @@
       "id": 2
     },
     {
-      "prenom": "Fatou",
-      "nom": "Diallo",
-      "numeroTel": 977156262,
+      "prenom": "Salif",
+      "nom": "Sagna",
+      "numeroTel": 76129273,
       "mesure": "23",
       "id": 3
-    }
-  ],
-  "comments": [
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "prenom": "Ibrahima Jr",
+      "nom": "Diarra",
+      "numeroTel": 12398765,
+      "mesure": "23",
+      "id": 4
     }
   ],
+  "comments": [],
   "profile": {
     "name": "typicode"
   }
