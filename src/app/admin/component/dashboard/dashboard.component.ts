@@ -23,5 +23,9 @@ export class DashboardComponent {
   navigateBoutique(){
     this.router.navigate(["/boutique"]);
   }
-
+	images=[
+    {name:'tailleur1.jpg',caption:'Tailleur1'},
+    {name:'tailleur2.jpg',caption:'Tailleur2'},
+    {name:'tailleur3.png',caption:'Tailleur3'}
+  ]
 }

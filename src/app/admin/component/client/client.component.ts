@@ -12,7 +12,9 @@ export class ClientComponent implements OnInit{
 
   idRoute:any;
   dataClient?:Array<client>;
-  public newdataClient:any|client;
+  showAddBtn:boolean=true;
+  showUpdateBtn:boolean=false;
+  newdataClient?:Array<client>;
   //dataClient:undefined|client[];
 
   clientForm:FormGroup |any;
@@ -20,8 +22,7 @@ export class ClientComponent implements OnInit{
 
   ngOnInit(): void {
     this.getAllClient();
-     this.idRoute=this.route.snapshot.paramMap.get('id');
-    this.fetchData(this.idRoute);
+    //this.idRoute=this.route.snapshot.paramMap.get('id');
     this.clientForm=this.formBuilder.group({
       prenom:['',Validators.required],
       nom:['',Validators.required],
@@ -50,15 +51,19 @@ export class ClientComponent implements OnInit{
     })
   }
 
-  fetchData(idRoute:any){
-    this.apiClient.fetchData(idRoute).subscribe((data:client)=>{
-      this.newdataClient=data;
+  editClient(client:client){
+    this.showAddBtn=false;
+    this.showUpdateBtn=true;
+    this.clientForm.setValue({
+        prenom:client.prenom,
+        nom:client.nom,
+        numeroTel:client.numeroTel,
+        mesure:client.mesure
     })
   }
 
-  updateClient(){
-    this.apiClient.updateClient(this.newdataClient,this.idRoute).subscribe(res=>{
-      this.router.navigate(["/client"]);
-    })
-  }
+    // this.apiClient.updateClient(this.newdataClient,this.idRoute).subscribe(res=>{
+    //   this.router.navigate(["/client"]);
+    // })
+  //}
 }

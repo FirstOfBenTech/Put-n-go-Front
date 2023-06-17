@@ -1,6 +1,6 @@
 <h4 class="mb-3">Gestions des Clients</h4>
 <button type="button" class="btn" style="background-color: #ff6e40;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Ajouter un Client
+  <i class="fas fa-user-plus p-1"></i>Client
 </button>
 
 <!-- Modal Ajout Client-->
@@ -35,7 +35,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-success" (click)="submitClient(this.clientForm.value)" [disabled]="clientForm.invalid">Enregistrer</button>
+        <button type="button" class="btn btn-success" (click)="submitClient(this.clientForm.value)" [disabled]="clientForm.invalid" *ngIf="showAddBtn">
+          Enregistrer
+        </button>
+        <button type="button" class="btn btn-success" [disabled]="clientForm.invalid" *ngIf="showUpdateBtn">
+          Modifier
+        </button>
       </div>
     </div>
   </div>
@@ -64,8 +69,8 @@
           <td>{{item.prenom}}</td>
           <td>{{item.numeroTel}}</td>
           <td>{{item.mesure}}</td>
-          <!-- <td><button class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#exampleModal3 ">Modifier</button></td> -->
-          <td><button class="btn btn-danger" (click)="deleteClient(item.id)">Supprimer</button></td>
+          <td><button class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editClient(item)"><i class="fas fa-edit"></i></button></td>
+          <td><button class="btn btn-danger" (click)="deleteClient(item.id)"><i class="fas fa-archive"></i></button></td>
         </tr>
       </tbody>
     </table>

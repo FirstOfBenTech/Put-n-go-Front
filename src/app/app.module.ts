@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HeaderComponent } from './admin/component/header/header.component';
+import {NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardComponent } from './admin/component/dashboard/dashboard.component';
 import { ClientComponent } from './admin/component/client/client.component';
 import { CommandeComponent } from './admin/component/commande/commande.component';
@@ -16,7 +15,6 @@ import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     DashboardComponent,
     ClientComponent,
     CommandeComponent,
@@ -30,7 +28,8 @@ import {HttpClientModule} from '@angular/common/http';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

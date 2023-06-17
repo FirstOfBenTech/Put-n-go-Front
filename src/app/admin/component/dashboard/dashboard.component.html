@@ -1,5 +1,4 @@
-<h3 class="">Dashboard</h3>
-
+<!-- <h3 class="">Dashboard</h3>
 <div class="container">
   <div class="card text-white mb-3 bg-primary">
     <div class="card-body">
@@ -38,28 +37,12 @@
       </div>
     </div>
   </div>
-</div>
-<h4 class="mt-4">Info Clients:</h4>
-<div class="">
-  <table class="table table-bordered border-danger table-info table-striped">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Date_Auth</th>
-        <th colspan="2">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Omar DIOP</td>
-        <td>odiop@gmail.com</td>
-        <td>12 Decembre 2023</td>
-        <td><button class="btn btn-primary">Consulter</button></td>
-        <td><button class="btn btn-danger">Supprimer</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+</div> -->
+<ngb-carousel *ngIf="images">
+<ng-template ngbSlide *ngFor="let image of images">
+  <div class="carousel-wrapper">
+    <img src="assets/{{image.name}}" [alt]="image.caption">
+    <div class="caption">{{image.caption}}</div>
+  </div>
+</ng-template>
+</ngb-carousel>
