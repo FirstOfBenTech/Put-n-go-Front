@@ -1,41 +1,5 @@
-<!-- <h4 class="mb-3">Gestion de la Boutique</h4> -->
-<button type="button" class="btn btn-info" data-bs-toggle="modal"
-  data-bs-target="#exampleModal">
-  <i class="fas fa-plus-circle p-1"></i>Categorie
-</button>
 
-<!-- Modal Ajout Categorie Stock-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter Categorie</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="">
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Libelle</span>
-            <input type="text" class="form-control" placeholder="Saisir le libelle">
-          </div>
-          <div class="input-group">
-            <span class="input-group-text">Description</span>
-            <textarea class="form-control" aria-label="Saisir la description"></textarea>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-success">Enregistrer</button>
-      </div>
-    </div>
-  </div>
-</div>
 <!--Ajouter Un Produit Boutique----------->
-
 <button type="button" class="btn btn-info"  data-bs-toggle="modal"
   data-bs-target="#exampleModal2">
   <i class="fas fa-plus-circle p-1"></i> Produit
@@ -83,87 +47,107 @@
 <!-----LISTE CATEGROIE------------------>
 
 <!-- <h5 class="mt-5 mb-4">Liste des Categories Boutiques</h5> -->
-<select class="form-select mb-5 w-25 bg-info mt-4" aria-label="Filter par : Ex: Tissu">
+<!-- <select class="form-select mb-5 w-25 bg-info mt-4" aria-label="Filter par : Ex: Tissu">
   <option selected>Filter Par : </option>
   <option value="1">Boutique Yaya</option>
   <option value="2">Sante Yalla Boutique</option>
   <option value="3">Lametoro Boutique</option>
-</select>
-
-  <div class="table-responsive">
-  <table class="table table-bordered border-danger table-info table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Libelle</th>
-        <th scope="col">Quantite</th>
-        <th scope="col">Prix</th>
-        <th scope="col">Description</th>
-        <th colspan="2">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Boutique Yaya</td>
-        <td>23</td>
-        <td>1200</td>
-        <td>Boutique situe a Patte d'oie</td>
-        <td><button class="btn btn-warning"><i class="fas fa-edit"></i></button></td>
-        <td><button class="btn btn-danger"><i class="fas fa-archive"></i></button></td>
-      </tr>
-      <tr>
-        <td>Sante Yalla Boutique</td>
-        <td>10</td>
-        <td>20000</td>
-        <td>Boutique se trouvant au centre Guediawaye</td>
-        <td><button class="btn btn-warning"><i class="fas fa-edit"></i></button></td>
-        <td><button class="btn btn-danger"><i class="fas fa-archive"></i></button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+</select> -->
 
 
 
-<!-----LISTE PRODUIT------------------>
 
-<!-- <h5 class="mt-5 mb-4">Liste des Produits:</h5> -->
-<select class="form-select mb-5 w-25 bg-info" aria-label="Filter par : Ex: Tissu">
-  <option selected>Filter Par : </option>
-  <option value="1">Boutique Yaya</option>
-  <option value="2">Sante Yalla Boutique</option>
-  <option value="3">Lametoro Boutique</option>
-</select>
+<!-----LISTE PRODUIT---------------->
+<div class="container mt-3">
+  <div class="card mb-3">
+    <img src="assets/image1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
+        <li class="list-group-item"><small>Taille: </small>:xl</li>
+        <li class="list-group-item"><small>Prix: </small>:10000</li>
+        <li class="list-group-item"><small>Quantité: </small>:15</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <img src="assets/image1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
+        <li class="list-group-item"><small>Taille: </small>:xl</li>
+        <li class="list-group-item"><small>Prix: </small>:10000</li>
+        <li class="list-group-item"><small>Quantité: </small>:15</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <img src="assets/image1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
+        <li class="list-group-item"><small>Taille: </small>:xl</li>
+        <li class="list-group-item"><small>Prix: </small>:10000</li>
+        <li class="list-group-item"><small>Quantité: </small>:15</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <img src="assets/image1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
+        <li class="list-group-item"><small>Taille: </small>:xl</li>
+        <li class="list-group-item"><small>Prix: </small>:10000</li>
+        <li class="list-group-item"><small>Quantité: </small>:15</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <img src="assets/image1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
+        <li class="list-group-item"><small>Taille: </small>:xl</li>
+        <li class="list-group-item"><small>Prix: </small>:10000</li>
+        <li class="list-group-item"><small>Quantité: </small>:15</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <img src="assets/image1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
+        <li class="list-group-item"><small>Taille: </small>:xl</li>
+        <li class="list-group-item"><small>Prix: </small>:10000</li>
+        <li class="list-group-item"><small>Quantité: </small>:15</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <img src="assets/image1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
+        <li class="list-group-item"><small>Taille: </small>:xl</li>
+        <li class="list-group-item"><small>Prix: </small>:10000</li>
+        <li class="list-group-item"><small>Quantité: </small>:15</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <img src="assets/image1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
+        <li class="list-group-item"><small>Taille: </small>:xl</li>
+        <li class="list-group-item"><small>Prix: </small>:10000</li>
+        <li class="list-group-item"><small>Quantité: </small>:15</li>
+      </ul>
+    </div>
+  </div>
 
-  <div class="table">
-  <table class="table table-bordered border-danger table-info table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Libelle</th>
-        <th scope="col">Quantite</th>
-        <th scope="col">Taille</th>
-        <th scope="col">Nb Metre</th>
-        <th colspan="2">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Ganila</td>
-        <td>23</td>
-        <td>32</td>
-        <td>13</td>
-        <td><button class="btn btn-warning"><i class="fas fa-edit"></i></button></td>
-        <td><button class="btn btn-danger"><i class="fas fa-archive"></i></button></td>
-      </tr>
-      <tr>
-        <td>Mode Tabaski</td>
-        <td>10</td>
-        <td>20</td>
-        <td>13</td>
-        <td><button class="btn btn-warning"><i class="fas fa-edit"></i></button></td>
-        <td><button class="btn btn-danger"><i class="fas fa-archive"></i></button></td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 
 

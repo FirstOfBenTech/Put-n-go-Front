@@ -7,16 +7,20 @@ import { CommandeComponent } from './admin/component/commande/commande.component
 import { StockComponent } from './admin/component/stock/stock.component';
 import { MesboutiquesComponent } from './admin/component/mesboutiques/mesboutiques.component';
 import { UpdateClientComponent } from './admin/component/update-client/update-client.component';
+import { ItemBoutiqueComponent } from './admin/component/item-boutique/item-boutique.component';
 
 const routes: Routes = [
   {
-    path:'',redirectTo:'client',pathMatch:'full'
+    path:'',redirectTo:'dashboard',pathMatch:'full'
   },
   {
     path:'dashboard',component:DashboardComponent
   },
   {
     path:'boutique',component:BoutiqueComponent
+  },
+  {
+    path:'itemBoutique',component:ItemBoutiqueComponent
   },
   {
     path:'client',component:ClientComponent
@@ -32,7 +36,7 @@ const routes: Routes = [
   },
   {
     path:'mesboutiques',component:MesboutiquesComponent
-  }
+  },
 
 ];
 
