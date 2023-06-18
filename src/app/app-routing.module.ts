@@ -6,6 +6,7 @@ import { ClientComponent } from './admin/component/client/client.component';
 import { CommandeComponent } from './admin/component/commande/commande.component';
 import { StockComponent } from './admin/component/stock/stock.component';
 import { MesboutiquesComponent } from './admin/component/mesboutiques/mesboutiques.component';
+import { UpdateClientComponent } from './admin/component/update-client/update-client.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,9 @@ const routes: Routes = [
   },
   {
     path:'client',component:ClientComponent
+  },
+  {
+    path:'updateClient/:id',component:UpdateClientComponent
   },
   {
     path:'commande',component:CommandeComponent

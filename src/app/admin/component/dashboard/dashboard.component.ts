@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  constructor(private router:Router){}
+  constructor(private router:Router,config: NgbCarouselConfig){
+
+    config.showNavigationArrows = true;
+    config.showNavigationIndicators = true;
+  }
+  showNavigationArrows = false;
+	showNavigationIndicators = false;
 
   navigateClient(){
     this.router.navigate(["/client"]);
@@ -24,8 +31,9 @@ export class DashboardComponent {
     this.router.navigate(["/boutique"]);
   }
 	images=[
-    {name:'tailleur1.jpg',caption:'Tailleur1'},
-    {name:'tailleur2.jpg',caption:'Tailleur2'},
-    {name:'tailleur3.png',caption:'Tailleur3'}
+    {name:'image1.jpg',caption:'image1'},
+    {name:'image2.jpg',caption:'image2'},
+    {name:'image3.jpg',caption:'image3'},
+    {name:'image4.jpg',caption:'image4'}
   ]
 }

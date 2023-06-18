@@ -3,6 +3,8 @@ import { FormBuilder,FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { client } from '../../model/clientmodel';
 import { ClientApiService } from '../../service/client-api.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -10,19 +12,21 @@ import { ClientApiService } from '../../service/client-api.service';
 })
 export class ClientComponent implements OnInit{
 
+  clientCategory:any=['prenom','nom','numeroTel','mesure'];
+  showAllData:any=[];
+  filterName:any;
+  filterData:any=[];
+  showData:any;
   idRoute:any;
-  dataClient?:Array<client>;
-  showAddBtn:boolean=true;
-  showUpdateBtn:boolean=false;
+  dataClient:Array<client>|any;
   newdataClient?:Array<client>;
   //dataClient:undefined|client[];
 
   clientForm:FormGroup |any;
-  constructor(private formBuilder:FormBuilder,private router:Router,private apiClient:ClientApiService,private route:ActivatedRoute){}
+  constructor(private formBuilder:FormBuilder,private router:Router,private apiClient:ClientApiService,private route:ActivatedRoute,private toarst:ToastrService){}
 
   ngOnInit(): void {
     this.getAllClient();
-    //this.idRoute=this.route.snapshot.paramMap.get('id');
     this.clientForm=this.formBuilder.group({
       prenom:['',Validators.required],
       nom:['',Validators.required],
@@ -33,7 +37,7 @@ export class ClientComponent implements OnInit{
 
   submitClient(data:client){
     this.apiClient.addClient(data).subscribe(res=>{
-      alert("Client Ajouté avec succes");
+      this.toarst.success("Client Ajouté avec success!");
       this.clientForm.reset();
       this.getAllClient();
     })}
@@ -41,29 +45,26 @@ export class ClientComponent implements OnInit{
   getAllClient(){
     this.apiClient.getClient().subscribe(res=>{
       this.dataClient=res;
+      this.showData=true;
     })
   }
 
   deleteClient(id:any){
     return this.apiClient.deleteClient(id).subscribe(res=>{
-      alert("Client supprimé avec succés");
+      this.toarst.success("Client supprimé avec success!");
       this.getAllClient();
     })
   }
+  onChange(e:any){
+    this.filterName=e.target.value;
+    this.showData=false;
+    this.dataClient.filter((element:any)=>{
+      if(element.category==this.filterName.toLowerCase())
+      {
+        this.filterData.push(element);
+      }
+    });
+    console.log(this.filterData);
 
-  editClient(client:client){
-    this.showAddBtn=false;
-    this.showUpdateBtn=true;
-    this.clientForm.setValue({
-        prenom:client.prenom,
-        nom:client.nom,
-        numeroTel:client.numeroTel,
-        mesure:client.mesure
-    })
   }
-
-    // this.apiClient.updateClient(this.newdataClient,this.idRoute).subscribe(res=>{
-    //   this.router.navigate(["/client"]);
-    // })
-  //}
 }

@@ -1,0 +1,27 @@
+<div class="card m-5">
+  <div class="card-header">Modifier un Client</div>
+  <div class="card-body">
+    <form>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Prenom</span>
+        <input type="text" class="form-control" [(ngModel)]="clientData.prenom" name="prenom">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Nom</span>
+        <input type="text" class="form-control" [(ngModel)]="clientData.nom" name="nom">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">N°Tel</span>
+        <input type="number" class="form-control" [(ngModel)]="clientData.numeroTel" name="numeroTel">
+      </div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Mesure</span>
+        <input type="text" class="form-control" [(ngModel)]="clientData.mesure" name="mesure">
+    </div>
+    </form>
+  </div>
+  <button type="button" class="btn btn-success mx-auto my-2" (click)="updateClient()">
+    Modifier
+  </button>
+
+</div>

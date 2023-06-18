@@ -11,6 +11,10 @@ import { StockComponent } from './admin/component/stock/stock.component';
 import { BoutiqueComponent } from './admin/component/boutique/boutique.component';
 import { MesboutiquesComponent } from './admin/component/mesboutiques/mesboutiques.component';
 import {HttpClientModule} from '@angular/common/http';
+import { UpdateClientComponent } from './admin/component/update-client/update-client.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { ItemBoutiqueComponent } from './admin/component/item-boutique/item-boutique.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,8 @@ import {HttpClientModule} from '@angular/common/http';
     StockComponent,
     BoutiqueComponent,
     MesboutiquesComponent,
+    UpdateClientComponent,
+    ItemBoutiqueComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +35,8 @@ import {HttpClientModule} from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     NgbCarouselModule
   ],
   providers: [],
