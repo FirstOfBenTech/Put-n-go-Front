@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import {NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardComponent } from './admin/component/dashboard/dashboard.component';
 import { ClientComponent } from './admin/component/client/client.component';
-import { CommandeComponent } from './admin/component/commande/commande.component';
 import { StockComponent } from './admin/component/stock/stock.component';
 import { BoutiqueComponent } from './admin/component/boutique/boutique.component';
 import { MesboutiquesComponent } from './admin/component/mesboutiques/mesboutiques.component';
@@ -15,18 +14,21 @@ import { UpdateClientComponent } from './admin/component/update-client/update-cl
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ItemBoutiqueComponent } from './admin/component/item-boutique/item-boutique.component';
+import { CommandeEnCoursComponent } from './admin/component/commande-en-cours/commande-en-cours.component';
+import { CommandeTermineComponent } from './admin/component/commande-termine/commande-termine.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     ClientComponent,
-    CommandeComponent,
     StockComponent,
     BoutiqueComponent,
     MesboutiquesComponent,
     UpdateClientComponent,
     ItemBoutiqueComponent,
+    CommandeEnCoursComponent,
+    CommandeTermineComponent,
   ],
   imports: [
     BrowserModule,
