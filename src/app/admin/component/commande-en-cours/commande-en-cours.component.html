@@ -1,6 +1,32 @@
-<select [(ngModel)]='selectOption' (ngModelChange)="navigatePage(selectOption)" class="form-select mb-5 center w-25 bg-info mt-3" aria-label="Filter par : Ex: Tissu">
-  <option value="EnCours">En Cours</option>
-  <option value="Termine">Terminé</option>
-</select>
+<div class="container-fluid d-flex p-3 justify-content-md-between">
+  <select [(ngModel)]='selectOption' (ngModelChange)="navigatePage(selectOption)" class="form-select center w-25 bg-info">
+    <option value="EnCours">En Cours</option>
+    <option value="Termine">Terminé</option>
+  </select>
+  <button class="btn bg-info"><i class="fas fa-plus-circle p-1"></i>Commande</button>
+</div>
 
-<h2>Commande En Cours</h2>
+<div class="">
+  <table class="table table-bordered border-danger table-info table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Date de Livraison</th>
+        <th scope="col">Commande</th>
+        <th scope="col">Couleur/Taille</th>
+        <th scope="col">Client</th>
+        <th scope="col">Avance</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>25-12-2023</td>
+        <td>Alpha</td>
+        <td>Bleu</td>
+        <td>Omar DIOP</td>
+        <td>0</td>
+        <td>40000</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
