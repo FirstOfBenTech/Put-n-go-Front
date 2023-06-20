@@ -1,21 +1,21 @@
 <div class="container-fluid d-flex p-3 justify-content-md-between">
-  <select [(ngModel)]='selectOption' (ngModelChange)="navigatePage(selectOption)" class="form-select center w-25 bg-info">
+  <select [(ngModel)]='selectOption' (ngModelChange)="navigatePage(selectOption)" class="form-select center w-25 bg-warning">
     <option value="EnCours">En Cours</option>
     <option value="Termine">Terminé</option>
   </select>
-  <button class="btn bg-info"><i class="fas fa-plus-circle p-1"></i>Commande</button>
+  <button class="btn bg-warning"><i class="fas fa-plus-circle p-1"></i>Commande</button>
 </div>
 
-<div class="">
-  <table class="table table-bordered border-danger table-info table-striped">
+<div class="m-3 table-responsive">
+  <table class="table table-bordered border-warning table-dark table-striped">
     <thead>
       <tr>
-        <th scope="col">Date de Livraison</th>
-        <th scope="col">Commande</th>
-        <th scope="col">Couleur/Taille</th>
-        <th scope="col">Client</th>
-        <th scope="col">Avance</th>
-        <th scope="col">Total</th>
+        <th scope="col" class="text-warning">Date de Livraison</th>
+        <th scope="col"class="text-warning">Commande</th>
+        <th scope="col"class="text-warning">Couleur/Taille</th>
+        <th scope="col"class="text-warning">Client</th>
+        <th scope="col"class="text-warning">Avance</th>
+        <th scope="col"class="text-warning">Total</th>
       </tr>
     </thead>
     <tbody>

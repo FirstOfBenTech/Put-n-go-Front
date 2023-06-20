@@ -1,5 +1,5 @@
 <!-- <h4 class="mb-3">Gestions des Clients</h4> -->
-<button type="button" class="btn btn-info mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
   <i class="fas fa-user-plus p-1"></i>Client
 </button>
 
@@ -45,16 +45,16 @@
 
 <!-----LISTER CLIENTS------------------>
   <ng-container *ngIf="dataClient?.length!=0">
-    <div class="mt-3 table-responsive">
-    <table class="table table-bordered border-danger table-info table-striped">
+    <div class="m-3 table-responsive">
+    <table class="table table-bordered border-warning table-dark table-striped">
       <thead>
         <tr>
-          <th scope="col">Numero</th>
-          <th scope="col">Nom</th>
-          <th scope="col">Prenom</th>
-          <th scope="col">N° Tel</th>
-          <th scope="col">Mesure</th>
-          <th colspan="2">Actions</th>
+          <th scope="col" class="text-warning" style="max-width:15px;">Num</th>
+          <th scope="col" class="text-warning">Nom</th>
+          <th scope="col"class="text-warning">Prenom</th>
+          <th scope="col"class="text-warning">N° Tel</th>
+          <th scope="col"class="text-warning"class="text-warning" style="max-width:14px;">Mesure</th>
+          <th colspan="2"class="text-warning">Actions</th>
         </tr>
       </thead>
       <tbody>
