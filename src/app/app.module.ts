@@ -16,6 +16,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ItemBoutiqueComponent } from './admin/component/item-boutique/item-boutique.component';
 import { CommandeEnCoursComponent } from './admin/component/commande-en-cours/commande-en-cours.component';
 import { CommandeTermineComponent } from './admin/component/commande-termine/commande-termine.component';
+import { ComptabiliteComponent } from './admin/component/comptabilite/comptabilite.component';
+import { FacturationComponent } from './admin/component/facturation/facturation.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { CommandeTermineComponent } from './admin/component/commande-termine/com
     ItemBoutiqueComponent,
     CommandeEnCoursComponent,
     CommandeTermineComponent,
+    ComptabiliteComponent,
+    FacturationComponent,
   ],
   imports: [
     BrowserModule,

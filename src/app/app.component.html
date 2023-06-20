@@ -17,6 +17,9 @@
       <a href="#" class="list-group-item list-group-item-action" routerLink="stock" routerLinkActive="active">
         <i class="fas fa-wallet m-2"></i>Stock
       </a>
+      <a href="#" class="list-group-item list-group-item-action" routerLink="comptabilite" routerLinkActive="active">
+        <i class="fa fa-bar-chart m-2"></i>Comptabilité
+      </a>
       <a href="#" class="list-group-item list-group-item-action" routerLink="boutique" routerLinkActive="active">
         <i class="fas fa-store m-2"></i>Boutique
       </a>
@@ -28,9 +31,9 @@
   <!-- /#sidebar-wrapper -->
   <!-- Page Content -->
   <div id="page-content-wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light bg-body-secondary">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc107;">
       <div class="container-fluid">
-        <button class="btn btn-primary" (click)="clickEvent()"><i class="fas fa-stream"></i></button>
+        <button class="btn text-warning text-bg-dark" (click)="clickEvent()"><i class="fas fa-stream"></i></button>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -61,7 +64,7 @@
         </div>
       </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-left:5px;">
       <router-outlet></router-outlet>
     </div>
   </div>

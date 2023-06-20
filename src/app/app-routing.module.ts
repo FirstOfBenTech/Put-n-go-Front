@@ -9,6 +9,8 @@ import { UpdateClientComponent } from './admin/component/update-client/update-cl
 import { ItemBoutiqueComponent } from './admin/component/item-boutique/item-boutique.component';
 import { CommandeEnCoursComponent } from './admin/component/commande-en-cours/commande-en-cours.component';
 import { CommandeTermineComponent } from './admin/component/commande-termine/commande-termine.component';
+import { ComptabiliteComponent } from './admin/component/comptabilite/comptabilite.component';
+import { FacturationComponent } from './admin/component/facturation/facturation.component';
 
 const routes: Routes = [
   {
@@ -41,7 +43,12 @@ const routes: Routes = [
   {
     path:'mesboutiques',component:MesboutiquesComponent
   },
-
+  {
+    path:'comptabilite',component:ComptabiliteComponent
+  },
+  {
+    path:'facturation',component:FacturationComponent
+  }
 ];
 
 @NgModule({

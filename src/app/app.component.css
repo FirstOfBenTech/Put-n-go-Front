@@ -27,6 +27,15 @@ body {
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
 }
+.active{
+  background-color:#ffc107;
+  border:1px solid #ffc107;
+  color:black;
+}
+.list-group-item:hover{
+  background-color:black;
+  color:white;
+}
 
 @media (min-width: 768px) {
   #sidebar-wrapper {
