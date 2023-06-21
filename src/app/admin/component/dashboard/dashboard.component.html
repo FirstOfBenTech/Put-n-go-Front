@@ -39,15 +39,19 @@
   </div>
 </div> -->
 
-<div class="" style="height: 100%;">
+<div class="">
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" *ngFor="let image of images">
-      <img src="/assets/{{image.name}}" class="d-block w-100 img-caroussel" alt="...">
+      <img src="/assets/{{image.name}}" class="d-block  img-caroussel" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <!-- <p class="text-warning">{{image.description}}</p> -->
+        <marquee width="60%" direction="left" height="100px" style="color:black">
+          <h4>{{image.description}}</h4>
+        </marquee>
+      </div>
     </div>
-    <marquee width="60%" direction="left" height="100px" style="color:white">
-    <h4>Bienvenue dans votre site</h4>
-  </marquee>
+
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
