@@ -3,9 +3,72 @@
     <option value="EnCours">En Cours</option>
     <option value="Termine">Terminé</option>
   </select>
-  <button class="btn bg-warning"><i class="fas fa-plus-circle p-1"></i>Commande</button>
+  <button class="btn bg-warning"data-bs-toggle="modal"data-bs-target="#exampleModalCommande">
+    <i class="fas fa-plus-circle p-1"></i>Commande</button>
 </div>
 
+<!------------------------Model Ajouter Commande------------------>
+<div class="modal fade" id="exampleModalCommande" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter Commande</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="row mb-5">
+            <div class="col">
+              <select class="form-select" aria-label="Choisir un Client">
+                <option selected>Choisir un Client</option>
+                <option value="1">Omar DIOP</option>
+                <option value="2">Assane</option>
+                <option value="3">Fatou</option>
+              </select>
+            </div>
+            <div class="col input-group">
+              <input type="date" name="date" id="" class="form-control">
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col">
+              <select class="form-select" aria-label="Choisir un Modele">
+                <option selected>Choisir un Modele</option>
+                <option value="1">Alpha</option>
+                <option value="2">Bazin</option>
+                <option value="3">Vax</option>
+              </select>
+            </div>
+            <div class="col input-group ">
+              <span class="input-group-text bg-black text-warning" >Quantite</span>
+              <input type="text" class="form-control" placeholder="Saisir la quantite">
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col input-group">
+              <span class="input-group-text bg-black text-warning">Avance</span>
+              <input type="number" class="form-control" placeholder="Saisir l'avance">
+            </div>
+            <div class="col input-group">
+              <span class="input-group-text bg-black text-warning">Remise</span>
+              <input type="number" class="form-control" placeholder="Saisir l'avance">
+            </div>
+          </div>
+          <!-- <div class="text-center">
+            <h5>Total: <strong class="text-warning">25000</strong></h5>
+          </div> -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-warning">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -20,6 +83,7 @@
         <th scope="col"class="text-warning">Client</th>
         <th scope="col"class="text-warning">Avance</th>
         <th scope="col"class="text-warning">Total</th>
+        <th scope="col"class="text-warning">Options</th>
       </tr>
     </thead>
     <tbody>
@@ -30,6 +94,7 @@
         <td>Omar DIOP</td>
         <td>0</td>
         <td>40000</td>
+        <td><button class="btn btn-warning"><i class="fa fa-thumbs-up"></i></button></td>
       </tr>
     </tbody>
   </table>

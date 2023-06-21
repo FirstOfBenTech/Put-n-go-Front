@@ -19,6 +19,7 @@
             <span class="input-group-text" id="basic-addon1">Prenom</span>
             <input type="text" class="form-control" formControlName="prenom" placeholder="Saisir le Prenom">
           </div>
+          <div class="alert alert-danger" *ngIf="clientForm.controls['prenom'].invalid && clientForm.controls['prenom'].touched">Le champ est obligatoire</div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Nom</span>
             <input type="text" class="form-control" formControlName="nom" placeholder="Saisir le nom ">
