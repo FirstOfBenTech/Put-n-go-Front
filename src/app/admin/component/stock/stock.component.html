@@ -1,8 +1,36 @@
-<!-- <h4 class="mb-3">Gestions du Stock</h4> -->
-<button type="button" class="btn btn-info mt-3 mb-5" data-bs-toggle="modal"
+<!-- <h4 class="mb-3">Gestion de la Boutique</h4> -->
+<button type="button" class="btn btn-warning m-3" data-bs-toggle="modal"
   data-bs-target="#exampleModal">
   <i class="fas fa-plus-circle p-1"></i>Categorie
 </button>
+
+<div class="container mt-3">
+  <div class="card mb-3 bg-warning" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Getzner</h5>
+      <div class="text-center">
+        <h5 class="">23</h5>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3 bg-warning" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Supercent</h5>
+      <div class="text-center">
+        <h5 class="">23</h5>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3 bg-warning" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Accessoires</h5>
+      <div class="text-center">
+        <h5 class="">23</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Modal Ajout Categorie Stock-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -21,14 +49,6 @@
             <span class="input-group-text" id="basic-addon1">Libelle</span>
             <input type="text" class="form-control" placeholder="Saisir le libelle">
           </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Quantite</span>
-            <input type="text" class="form-control" placeholder="Saisir la quantite">
-          </div>
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">Prix</span>
-            <input type="number" class="form-control" placeholder="Saisir le prix">
-          </div>
           <div class="input-group">
             <span class="input-group-text">Description</span>
             <textarea class="form-control" aria-label="Saisir la description"></textarea>
@@ -41,46 +61,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<!-----LISTE CATEGROIE------------------>
-
-<!-- <h5 class="mt-5 mb-4">Liste des Categories</h5> -->
-<select class="form-select mb-5 center w-25 bg-info" aria-label="Filter par : Ex: Tissu">
-  <option selected>Filter Par : </option>
-  <option value="1">Tissu</option>
-  <option value="2">Ganila</option>
-  <option value="3">Bazin</option>
-</select>
-
-<div class="">
-  <table class="table table-bordered border-danger table-info table-striped">
-    <thead>
-      <tr>
-        <th scope="col">Libelle</th>
-        <th scope="col">Quantite</th>
-        <th scope="col">Prix</th>
-        <th scope="col">Description</th>
-        <th colspan="2">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Tissu</td>
-        <td>23</td>
-        <td>1200</td>
-        <td>Tissu venant du Mali</td>
-        <td><button class="btn btn-warning"><i class="fas fa-edit"></i></button></td>
-        <td><button class="btn btn-danger"><i class="fas fa-archive"></i></button></td>
-      </tr>
-      <tr>
-        <td>Ganila</td>
-        <td>10</td>
-        <td>20000</td>
-        <td>Ganila du Senegal</td>
-        <td><button class="btn btn-warning"><i class="fas fa-edit"></i></button></td>
-        <td><button class="btn btn-danger"><i class="fas fa-archive"></i></button></td>
-      </tr>
-    </tbody>
-  </table>
 </div>

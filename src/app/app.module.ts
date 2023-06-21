@@ -18,6 +18,10 @@ import { CommandeEnCoursComponent } from './admin/component/commande-en-cours/co
 import { CommandeTermineComponent } from './admin/component/commande-termine/commande-termine.component';
 import { ComptabiliteComponent } from './admin/component/comptabilite/comptabilite.component';
 import { FacturationComponent } from './admin/component/facturation/facturation.component';
+import { CaisseComponent } from './admin/component/caisse/caisse.component';
+import { ComptabilitegeneraleComponent } from './admin/component/comptabilitegenerale/comptabilitegenerale.component';
+import { SalaireComponent } from './admin/component/salaire/salaire.component';
+import { AutrefactureComponent } from './admin/component/autrefacture/autrefacture.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,10 @@ import { FacturationComponent } from './admin/component/facturation/facturation.
     CommandeTermineComponent,
     ComptabiliteComponent,
     FacturationComponent,
+    CaisseComponent,
+    ComptabilitegeneraleComponent,
+    SalaireComponent,
+    AutrefactureComponent,
   ],
   imports: [
     BrowserModule,
