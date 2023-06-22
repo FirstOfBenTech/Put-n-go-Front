@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientApiService } from '../../service/client-api.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-commande-en-cours',
@@ -9,11 +10,23 @@ import { ClientApiService } from '../../service/client-api.service';
 })
 export class CommandeEnCoursComponent implements OnInit{
 
+  commandeEncoursForm:FormGroup|any;
+constructor(private router:Router,private apiClient:ClientApiService,private formBuilder:FormBuilder){}
+
   ngOnInit(): void {
       this.getAllClient();
+      this.onFormSubmit();
+      this.commandeEncoursForm=this.formBuilder.group({
+       // clientName:['',Validators.required],
+        date:['',Validators.required],
+        //modeleName:['',Validators.required],
+        quantite:['',Validators.required],
+        avance:['',Validators.required],
+        remise:['',Validators.required]
+      })
   }
 
-constructor(private router:Router,private apiClient:ClientApiService){}
+
 clientData:any;
 
 
@@ -31,5 +44,9 @@ selectOption:any;
     this.apiClient.getClient().subscribe(res=>{
       this.clientData=res;
     })
+  }
+  onFormSubmit(){
+    console.log(this.commandeEncoursForm.value);
+
   }
 }
