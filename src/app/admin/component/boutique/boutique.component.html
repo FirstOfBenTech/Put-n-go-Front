@@ -4,35 +4,26 @@
   <i class="fas fa-plus-circle p-1"></i>Categorie
 </button>
 
-<div class="container mt-3">
-  <div class="card mb-3 bg-warning" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title text-center">Getzner</h5>
-      <p class="card-text">Getzner venue du Mali</p>
-      <div class="text-center">
-        <button class="btn btn-dark text-warning" (click)="NavigateElement()"><i class="fa fa-eye"></i></button>
+<ng-container *ngIf="categorieData.length!=0">
+ <div class="" >
+  <div class="container mt-3">
+    <div class="card mb-3 bg-warning" style="width: 19rem; height: 9rem;" *ngFor="let categorie of categorieData">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{categorie.libelle}}</h5>
+        <p class="card-text">{{categorie.description}}</p>
+        <div class="text-center" style="margin-bottom: 0px;">
+          <button class="btn btn-dark text-warning" (click)="NavigateElement()"><i class="fa fa-eye"></i></button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="card mb-3 bg-warning" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title text-center">Supercent</h5>
-      <p class="card-text">Supercent venu du Senegal</p>
-      <div class="text-center">
-        <a href="#" class="btn btn-dark text-warning"><i class="fa fa-eye"></i></a>
-      </div>
-    </div>
+ </div>
+</ng-container>
+<ng-container *ngIf="categorieData.length==0">
+  <div class="">
+    <h5 class="m-3">La liste est vide !</h5>
   </div>
-  <div class="card mb-3 bg-warning" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title text-center">Accessoires</h5>
-      <p class="card-text">Accessoires de toutes pieces</p>
-      <div class="text-center">
-        <a href="#" class="btn btn-dark text-warning"><i class="fa fa-eye"></i></a>
-      </div>
-    </div>
-  </div>
-</div>
+</ng-container>
 
 
 <!-- Modal Ajout Categorie Stock-->
@@ -47,20 +38,20 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form [formGroup]="categorieForm">
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Libelle</span>
-            <input type="text" class="form-control" placeholder="Saisir le libelle">
+            <input type="text" class="form-control" placeholder="Saisir le libelle" formControlName="libelle">
           </div>
           <div class="input-group">
             <span class="input-group-text">Description</span>
-            <textarea class="form-control" aria-label="Saisir la description"></textarea>
+            <textarea class="form-control" aria-label="Saisir la description" formControlName="description"></textarea>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-success">Enregistrer</button>
+        <button type="button" class="btn btn-success" (click)="addCategorie(this.categorieForm.value)" [disabled]="categorieForm.invalid">Enregistrer</button>
       </div>
     </div>
   </div>

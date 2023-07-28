@@ -43,8 +43,30 @@
       "quantite": "10",
       "avance": 2300,
       "remise": 1000,
-      "valide": "",
+      "valide": true,
       "id": 3
+    }
+  ],
+  "categorie": [
+    {
+      "libelle": "Bazin",
+      "description": "Bazin riche",
+      "id": 1
+    },
+    {
+      "libelle": "Pantalon",
+      "description": "Pantalon courte et longue",
+      "id": 2
+    },
+    {
+      "libelle": "Super Cent",
+      "description": "Venu direct du Mali",
+      "id": 3
+    },
+    {
+      "libelle": "Grand Boubou",
+      "description": "importé a Casamance",
+      "id": 4
     }
   ],
   "profile": {
