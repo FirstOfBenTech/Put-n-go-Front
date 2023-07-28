@@ -2,27 +2,51 @@
   "posts": [
     {
       "prenom": "Omar",
-      "nom": "DIOP",
-      "numeroTel": 12333332,
-      "mesure": "10 12 12 12",
+      "nom": "Diop",
+      "numeroTel": 1292991,
+      "mesure": "12 23 43 67",
       "id": 1
     },
     {
-      "prenom": "Alassane",
-      "nom": "Faye",
-      "numeroTel": 12330202,
-      "mesure": "12 32 12 12",
+      "prenom": "Fatou",
+      "nom": "Diallo",
+      "numeroTel": 34561781,
+      "mesure": "12 43 56 87",
+      "id": 2
+    }
+  ],
+  "commande": [
+    {
+      "clientId": "1",
+      "date": "2023-07-13",
+      "modeleId": "2",
+      "quantite": "10",
+      "avance": 100,
+      "remise": 100,
+      "valide": true,
+      "id": 1
+    },
+    {
+      "clientId": "2",
+      "date": "2023-07-04",
+      "modeleId": "2",
+      "quantite": "10",
+      "avance": 100,
+      "remise": 200,
+      "valide": true,
       "id": 2
     },
     {
-      "prenom": "Ndeye Mareme",
-      "nom": "Gueye",
-      "numeroTel": 123456886,
-      "mesure": "21 43 65 76",
-      "id": 4
+      "clientId": "2",
+      "date": "2023-07-30",
+      "modeleId": "2",
+      "quantite": "10",
+      "avance": 2300,
+      "remise": 1000,
+      "valide": "",
+      "id": 3
     }
   ],
-  "comments": [],
   "profile": {
     "name": "typicode"
   }

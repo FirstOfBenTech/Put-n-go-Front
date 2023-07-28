@@ -19,14 +19,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="commandeEncoursForm" (ngSubmit)="onFormSubmit()">
+        <form [formGroup]="commandeEncoursForm">
           <div class="row mb-5">
             <div class="col">
-              <select class="form-select" aria-label="Choisir un Client" formControlName="clientName">
+              <select class="form-select" aria-label="Choisir un Client" formControlName="clientId" (change)="selectedOption($event)">
                 <option selected>Choisir un Client</option>
-                <option value="1">Omar DIOP</option>
-                <option value="2">Assane</option>
-                <option value="3">Fatou</option>
+                <option *ngFor="let client of clientData" [value]="client.id" class="text-black">{{client.prenom}} {{client.nom}}</option>
               </select>
             </div>
             <div class="col input-group">
@@ -35,7 +33,7 @@
           </div>
           <div class="row mb-5">
             <div class="col">
-              <select class="form-select" aria-label="Choisir un Modele" formControlName="modeleName">
+              <select class="form-select" aria-label="Choisir un Modele" formControlName="modeleId">
                 <option selected>Choisir un Modele</option>
                 <option value="1">Alpha</option>
                 <option value="2">Bazin</option>
@@ -64,7 +62,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-warning">Enregistrer</button>
+        <button type="button" class="btn btn-warning" (click)="submitCommande(this.commandeEncoursForm.value)">Enregistrer</button>
       </div>
     </div>
   </div>
@@ -73,29 +71,40 @@
 
 
 <!----Liste des commandes----------------------->
-<div class="m-3 table-responsive">
-  <table class="table table-bordered border-warning table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col" class="text-warning">Date de Livraison</th>
-        <th scope="col"class="text-warning">Commande</th>
-        <th scope="col"class="text-warning">Couleur/Taille</th>
-        <th scope="col"class="text-warning">Client</th>
-        <th scope="col"class="text-warning">Avance</th>
-        <th scope="col"class="text-warning">Total</th>
-        <th scope="col"class="text-warning">Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>25-12-2023</td>
-        <td>Alpha</td>
-        <td>Bleu</td>
-        <td>Omar DIOP</td>
-        <td>0</td>
-        <td>40000</td>
-        <td><button class="btn btn-warning"><i class="fa fa-thumbs-up"></i></button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<ng-container *ngIf="commandeData.length!=0">
+  <div class="m-3 table-responsive">
+    <table class="table table-bordered border-warning table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col" class="text-warning">Date de Livraison</th>
+          <th scope="col"class="text-warning">Commande</th>
+          <th scope="col"class="text-warning">Couleur/Taille</th>
+          <th scope="col"class="text-warning">Client</th>
+          <th scope="col"class="text-warning">Avance</th>
+          <th scope="col" class="text-warning">Remise</th>
+          <th scope="col"class="text-warning">Total</th>
+          <th scope="col"class="text-warning" colspan="2">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commande of commandeData">
+          <td>{{commande.date}}</td>
+          <td>{{commande.modeleId}}</td>
+          <td>{{commande.quantite}}</td>
+          <!-- <td>{{commande.clientName}}</td> -->
+          <th>{{getClientName(commande.clientId)}}</th>
+          <td>{{commande.avance}}</td>
+          <td>{{commande.remise}}</td>
+          <td>400000</td>
+          <td><button class="btn btn-warning"><i class="fa fa-thumbs-up"></i></button></td>
+          <td><button (click)="validerCommande(commande)">Val</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+<ng-container *ngIf="commandeData.length==0">
+  <div class="">
+    <h5>La liste est vide</h5>
+  </div>
+</ng-container>
