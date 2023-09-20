@@ -32,6 +32,7 @@ export class BoutiqueComponent implements OnInit{
       this.apiBoutique.addCategorie(data).subscribe(res=>{
         this.categorieForm.reset();
         this.toastr.success('Categorie Ajouté avec success !');
+        this.getAllCategorie();
       })
   }
   getAllCategorie(){

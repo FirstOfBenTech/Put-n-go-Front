@@ -1,10 +1,14 @@
 <div class="container-fluid d-flex p-3 justify-content-md-between">
   <select [(ngModel)]='selectOption' (ngModelChange)="navigatePage(selectOption)" class="form-select center w-25 bg-warning">
     <option value="EnCours">En Cours</option>
-    <option value="Termine">Terminé</option>
+    <option value="Termine">Pret</option>
+    <option value="Livre">Livré</option>
   </select>
   <button class="btn bg-warning"data-bs-toggle="modal"data-bs-target="#exampleModalCommande">
     <i class="fas fa-plus-circle p-1"></i>Commande</button>
+</div>
+<div class="d-flex">
+  <h5 class="text-white" style="margin-left: 10px;">Nombre de Commande :</h5><h5 class="text-warning px-1">{{nombreCommande}}</h5>
 </div>
 
 <!------------------------Model Ajouter Commande------------------>
@@ -13,7 +17,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter Commande</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une Commande</h5>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -22,7 +26,7 @@
         <form [formGroup]="commandeEncoursForm">
           <div class="row mb-5">
             <div class="col">
-              <select class="form-select" aria-label="Choisir un Client" formControlName="clientId" (change)="selectedOption($event)">
+              <select class="form-select" aria-label="Choisir un Client" formControlName="clientId">
                 <option selected>Choisir un Client</option>
                 <option *ngFor="let client of clientData" [value]="client.id" class="text-black">{{client.prenom}} {{client.nom}}</option>
               </select>
@@ -31,18 +35,29 @@
               <input type="date" name="date" id="" class="form-control" formControlName="date">
             </div>
           </div>
-          <div class="row mb-5">
-            <div class="col">
-              <select class="form-select" aria-label="Choisir un Modele" formControlName="modeleId">
-                <option selected>Choisir un Modele</option>
-                <option value="1">Alpha</option>
-                <option value="2">Bazin</option>
-                <option value="3">Vax</option>
-              </select>
-            </div>
-            <div class="col input-group ">
-              <span class="input-group-text bg-black text-warning" >Quantite</span>
-              <input type="text" class="form-control" placeholder="Saisir la quantite" formControlName="quantite">
+          <div class="row mb-5" formArrayName="modeles">
+            <div class="row" *ngFor="let modele of modeles.controls;let i = index" [formGroupName]="i">
+              <div class="col">
+                <!-- <select multiple [(ngModel)]="selectedItems" class="form-select" aria-label="Choisir un Modele" formControlName="modeleId"> -->
+                <select [id]="'modeleId' + i" class="form-select" aria-label="Choisir un Modele" formControlName="modeleId">
+                  <option selected>Choisir un Modele</option>
+                  <option *ngFor="let produit of produitData" [value]="produit.id" class="text-black">{{produit.libelle}}</option>
+                </select>
+              </div>
+              <div class="col input-group">
+                <span class="input-group-text bg-black text-warning" >Qnte</span>
+                <input type="number" [id]="'quantite' + i" class="form-control" placeholder="Saisir la quantite" formControlName="quantite">
+                <div class="mx-2">
+                  <button class="btn btn-warning" (click)="creerModele()"><i class="fas fa-plus-circle p-1"></i></button>
+                </div>
+              </div>
+              <div class="d-flex justify-content-sm-evenly mt-3">
+                <button class="btn btn-success" (click)="onSelectedProduct(produitData[i])"><i class="fa fa-eye"></i></button>
+              </div>
+              <div class="" *ngIf="selectedProduit===produitData[i]">
+                <p>Produit : {{selectedProduit?.libelle}}</p>
+                <!-- <p>Quantite {{productControl.get('quantite').value}}</p> -->
+              </div>
             </div>
           </div>
           <div class="row mb-5">
@@ -62,7 +77,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-warning" (click)="submitCommande(this.commandeEncoursForm.value)">Enregistrer</button>
+        <button type="button" class="btn btn-warning" (click)="submitCommande(this.commandeEncoursForm.value)" >Enregistrer</button>
       </div>
     </div>
   </div>
@@ -83,20 +98,22 @@
           <th scope="col"class="text-warning">Avance</th>
           <th scope="col" class="text-warning">Remise</th>
           <th scope="col"class="text-warning">Total</th>
-          <th scope="col"class="text-warning" colspan="2">Options</th>
+          <th scope="col"class="text-warning" colspan="4">Options</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let commande of commandeData">
           <td>{{commande.date}}</td>
-          <td>{{commande.modeleId}}</td>
+          <td>{{commande.modeles}}</td>
           <td>{{commande.quantite}}</td>
-          <!-- <td>{{commande.clientName}}</td> -->
-          <th>{{getClientName(commande.clientId)}}</th>
+          <td>{{commande.clientId}}</td>
+          <!-- <th>{{getClientName(commande.clientId)}}</th> -->
           <td>{{commande.avance}}</td>
           <td>{{commande.remise}}</td>
           <td>400000</td>
-          <td><button class="btn btn-warning" (click)="validerCommande(commande)"><i class="fa fa-thumbs-up"></i></button></td>
+          <td><button class="btn btn-warning" routerLink="/updateCommande/{{commande.id}}"><i class="fas fa-edit"></i></button></td>
+          <td><button class="btn btn-danger" (click)="deleteCommande(commande.id)"><i class="fas fa-archive"></i></button></td>
+          <td><button class="btn btn-success" (click)="validerCommande(commande)"><i class="fa fa-thumbs-up"></i></button></td>
         </tr>
       </tbody>
     </table>
@@ -104,6 +121,6 @@
 </ng-container>
 <ng-container *ngIf="commandeData.length==0">
   <div class="">
-    <h5>La liste est vide</h5>
+    <h5 class="mx-2 text-white">La liste est vide pas de commande en cours</h5>
   </div>
 </ng-container>

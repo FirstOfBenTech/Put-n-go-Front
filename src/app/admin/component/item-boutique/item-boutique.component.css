@@ -3,10 +3,10 @@
   flex-wrap:wrap;
 }
 .card{
-  max-width:16rem;
-  margin:auto;
+  width:12rem;
+  margin-left:42px;
+  margin-bottom:30px;
   min-width:9rem;
-  height:300px;
   transition:0.3s ease-in-out;
 }
 .card:hover{
@@ -15,7 +15,4 @@
 }
 small{
   color:red;
-}
-.card-img-top{
-  height:120px;
 }

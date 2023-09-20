@@ -1,7 +1,8 @@
 <div class="container-fluid d-flex p-3 justify-content-md-between">
   <select [(ngModel)]='selectOption' (ngModelChange)="navigatePage(selectOption)" class="form-select center w-25 bg-warning">
     <option value="EnCours">En Cours</option>
-    <option value="Termine">Terminé</option>
+    <option value="Termine">Pret</option>
+    <option value="Livre">Livré</option>
   </select>
   <!-- <button class="btn bg-warning"><i class="fas fa-plus-circle p-1"></i>Commande</button> -->
 </div>
@@ -18,6 +19,7 @@
           <th scope="col"class="text-warning">Avance</th>
           <th scope="col"class="text-warning">Remise</th>
           <th scope="col"class="text-warning">Total</th>
+          <th scope="col" class="text-warning">Options</th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +31,7 @@
           <td>{{commande.avance}}</td>
           <td>{{commande.remise}}</td>
           <td>400000</td>
+          <td><button class="btn btn-success" (click)="livrerCommande(commande)"><i class="fa fa-check-circle"></i></button></td>
         </tr>
       </tbody>
     </table>

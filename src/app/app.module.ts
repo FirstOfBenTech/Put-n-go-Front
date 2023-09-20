@@ -22,6 +22,12 @@ import { CaisseComponent } from './admin/component/caisse/caisse.component';
 import { ComptabilitegeneraleComponent } from './admin/component/comptabilitegenerale/comptabilitegenerale.component';
 import { SalaireComponent } from './admin/component/salaire/salaire.component';
 import { AutrefactureComponent } from './admin/component/autrefacture/autrefacture.component';
+import { LoginComponent } from './admin/component/login/login.component';
+import { SignupComponent } from './admin/component/signup/signup.component';
+import { ParametreComponent } from './admin/component/parametre/parametre.component';
+import { CommandeLivreComponent } from './admin/component/commande-livre/commande-livre.component';
+import { UpdateCommandeComponent } from './admin/component/update-commande/update-commande.component';
+import { GeneraleComponent } from './admin/component/generale/generale.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,12 @@ import { AutrefactureComponent } from './admin/component/autrefacture/autrefactu
     ComptabilitegeneraleComponent,
     SalaireComponent,
     AutrefactureComponent,
+    LoginComponent,
+    SignupComponent,
+    ParametreComponent,
+    CommandeLivreComponent,
+    UpdateCommandeComponent,
+    GeneraleComponent,
   ],
   imports: [
     BrowserModule,

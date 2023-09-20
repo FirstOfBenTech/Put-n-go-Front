@@ -14,21 +14,43 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="">
+        <form [formGroup]="mesBoutiquesForm">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Libelle</span>
+            <input type="text" class="form-control" placeholder="Saisir le nom de la bourique" formControlName="libelle">
+          </div>
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">Username</span>
-            <input type="text" class="form-control" placeholder="Saisir le nom d'utilisateur">
+            <input type="text" class="form-control" placeholder="Saisir le nom d'utilisateur" autocomplete="username" formControlName="username">
           </div>
           <div class="input-group">
             <span class="input-group-text">Password</span>
-            <input type="password" class="form-control" placeholder="Saisir le mot de passe">
+            <input type="password" class="form-control" placeholder="Saisir le mot de passe" autocomplete="current-password" formControlName="password">
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-warning">Enregistrer</button>
+        <button type="button" class="btn btn-warning" (click)="addBoutiques(mesBoutiquesForm.value)" [disabled]="mesBoutiquesForm.invalid">Enregistrer</button>
       </div>
     </div>
   </div>
 </div>
+<ng-container *ngIf="mesBoutiquesData.length !=0">
+  <div class="d-flex mx-2" style="flex-wrap: wrap;">
+    <div class="card mx-3 mb-3" style="width: 13rem; border: none;" *ngFor="let mesboutiques of mesBoutiquesData">
+      <div class="card-header text-center fs-6 text-uppercase bg-warning" style="font-weight: bold;">
+        {{mesboutiques.libelle}}
+      </div>
+      <div class="card-body text-center">
+        <h5 class="card-title pb-3">{{mesboutiques.username}}</h5>
+        <a href="#" class="btn btn-warning text-center">Consulter</a>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="mesBoutiquesData?.length==0">
+  <div class="">
+    <h5 class="mx-3 text-white">La liste est vide !</h5>
+  </div>
+</ng-container>

@@ -1,7 +1,7 @@
 
 <!--Ajouter Un Produit Boutique----------->
 <div class="container-fluid d-flex p-3 justify-content-md-between">
-<button class="btn btn-warning" (click)="navigatePrevious()"><i class="fa fa-reply"></i></button>
+<button class="btn btn-warning mt-2" (click)="navigatePrevious()" style="height: 37px; width: 35px;"><i class="fa fa-reply"></i></button>
 <button type="button" class="btn btn-warning m-2"  data-bs-toggle="modal"
   data-bs-target="#exampleModal2">
   <i class="fas fa-plus-circle p-1"></i>Model
@@ -22,39 +22,30 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="">
-          <div class="mb-3">
-            <input class="form-control" type="file" id="formFile">
-          </div>
+        <form enctype="multipart/form-data" [formGroup]="produitForm">
           <div class="input-group mb-3">
               <span class="input-group-text bg-black text-warning">Libelle</span>
-              <input type="text" class="form-control" placeholder="Saisir le libelle">
+              <input type="text" class="form-control" placeholder="Saisir le libelle" formControlName="libelle">
             </div>
           <div class="row">
-
-            <div class="col input-group mb-3">
-              <span class="input-group-text bg-black text-warning" >Quantite</span>
-              <input type="text" class="form-control" placeholder="Saisir la quantite">
+              <div class="col input-group mb-3">
+                <span class="input-group-text bg-black text-warning" >Quantite</span>
+                <input type="text" class="form-control" placeholder="Saisir la quantite" formControlName="quantite">
+              </div>
+              <div class="col input-group mb-3">
+              <span class="input-group-text bg-black text-warning" >Taille</span>
+              <input type="text" class="form-control" placeholder="Saisir la taille" formControlName="taille">
             </div>
-            <div class="col input-group mb-3">
-            <span class="input-group-text bg-black text-warning" >Taille</span>
-            <input type="number" class="form-control" placeholder="Saisir la taille">
-          </div>
-          </div>
-
-          <div class="input-group mb-3">
-            <span class="input-group-text bg-black text-warning" >Nombre de metre</span>
-            <input type="number" class="form-control" placeholder="Saisir le nombre de mettre de la tenue">
           </div>
           <div class="input-group mb-3">
-            <span class="input-group-text bg-black text-warning" >Nom du modele</span>
-            <input type="text" class="form-control" placeholder="Saisir le nom du model">
+            <span class="input-group-text bg-black text-warning">Prix</span>
+            <input type="text" class="form-control" placeholder="Saisir le prix" formControlName="prix">
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-warning">Enregistrer</button>
+        <button type="button" class="btn btn-warning" (click)="addProduit(produitForm.value)" [disabled]="produitForm.invalid">Enregistrer</button>
       </div>
     </div>
   </div>
@@ -74,97 +65,23 @@
 
 
 <!-----LISTE PRODUIT---------------->
-<div class="container mt-3">
-  <div class="card mb-4">
-    <img src="assets/img1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
-        <li class="list-group-item"><small>Taille: </small>:xl</li>
-        <li class="list-group-item"><small>Prix: </small>:10000</li>
-        <li class="list-group-item"><small>Quantité: </small>:15</li>
-      </ul>
+<ng-container *ngIf="produitData.length!=0">
+  <div class="container mt-3">
+    <div class="card" *ngFor="let produit of produitData">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><small>Modéle: </small>{{produit.libelle}}</li>
+          <li class="list-group-item"><small>Taille: </small>{{produit.taille}}</li>
+          <li class="list-group-item"><small>Prix: </small>{{produit.prix}}</li>
+          <li class="list-group-item"><small>Quantité: </small>{{produit.quantite}}</li>
+        </ul>
     </div>
   </div>
-  <div class="card mb-3">
-    <img src="assets/img1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
-        <li class="list-group-item"><small>Taille: </small>:xl</li>
-        <li class="list-group-item"><small>Prix: </small>:10000</li>
-        <li class="list-group-item"><small>Quantité: </small>:15</li>
-      </ul>
-    </div>
+</ng-container>
+<ng-container *ngIf="produitData.length==0">
+  <div class="">
+    <h5 class="mx-3 text-white">La liste est vide !</h5>
   </div>
-  <div class="card mb-3">
-    <img src="assets/img1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
-        <li class="list-group-item"><small>Taille: </small>:xl</li>
-        <li class="list-group-item"><small>Prix: </small>:10000</li>
-        <li class="list-group-item"><small>Quantité: </small>:15</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <img src="assets/img1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
-        <li class="list-group-item"><small>Taille: </small>:xl</li>
-        <li class="list-group-item"><small>Prix: </small>:10000</li>
-        <li class="list-group-item"><small>Quantité: </small>:15</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <img src="assets/img1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
-        <li class="list-group-item"><small>Taille: </small>:xl</li>
-        <li class="list-group-item"><small>Prix: </small>:10000</li>
-        <li class="list-group-item"><small>Quantité: </small>:15</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <img src="assets/img1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
-        <li class="list-group-item"><small>Taille: </small>:xl</li>
-        <li class="list-group-item"><small>Prix: </small>:10000</li>
-        <li class="list-group-item"><small>Quantité: </small>:15</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <img src="assets/img1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
-        <li class="list-group-item"><small>Taille: </small>:xl</li>
-        <li class="list-group-item"><small>Prix: </small>:10000</li>
-        <li class="list-group-item"><small>Quantité: </small>:15</li>
-      </ul>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <img src="assets/img1.jpeg" class="card-img-top" alt="...">
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><small>Modéle: </small>Grand Boubou</li>
-        <li class="list-group-item"><small>Taille: </small>:xl</li>
-        <li class="list-group-item"><small>Prix: </small>:10000</li>
-        <li class="list-group-item"><small>Quantité: </small>:15</li>
-      </ul>
-    </div>
-  </div>
-
-</div>
+</ng-container>
 
 
 

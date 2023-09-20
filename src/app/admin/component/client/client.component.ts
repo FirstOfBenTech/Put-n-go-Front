@@ -20,6 +20,9 @@ export class ClientComponent implements OnInit{
   idRoute:any;
   dataClient:Array<client>|any;
   newdataClient?:Array<client>;
+  nombreClient:any;
+  pageNumber:number=1;
+  pageSize:number=10;
   //dataClient:undefined|client[];
 
   clientForm:FormGroup |any;
@@ -28,14 +31,27 @@ export class ClientComponent implements OnInit{
   ngOnInit(): void {
     this.getAllClient();
     this.clientForm=this.formBuilder.group({
-      prenom:['',Validators.required],
-      nom:['',Validators.required],
-      numeroTel:['',Validators.required],
-      mesure:['',Validators.required]
+      firstName:['',Validators.required],
+      lastName:['',Validators.required],
+      phone:['',Validators.required],
+      // adresse:['',Validators.required],
+      // mesureC:['',Validators.required],
+      // mesureE:['',Validators.required],
+      // mesureM:['',Validators.required],
+      // mesureLa:['',Validators.required],
+      // mesureLb:['',Validators.required],
+      // mesureS:['',Validators.required],
+      // mesureK:['',Validators.required],
+      // mesureF:['',Validators.required],
+      // mesureLp:['',Validators.required],
+      // mesureBr:['',Validators.required],
+      // mesureBa:['',Validators.required],
+      // mesurePoignee:['',Validators.required],
+      // mesureMollet:['',Validators.required]
     })
   }
 
-  submitClient(data:client){
+  submitClient(data:any){
     this.apiClient.addClient(data).subscribe(res=>{
       this.toarst.success("Client Ajouté avec success!");
       this.clientForm.reset();
@@ -46,25 +62,30 @@ export class ClientComponent implements OnInit{
     this.apiClient.getClient().subscribe(res=>{
       this.dataClient=res;
       this.showData=true;
-    })
+      this.nombreClient=this.dataClient.length;
+    },
+     (error)=>{
+      this.toarst.error('Une erreur est survenue');
+      console.error('Erreur lors de l ajout');
+
+     }
+    )
   }
 
-  deleteClient(id:any){
-    return this.apiClient.deleteClient(id).subscribe(res=>{
+  deleteClient(id:string){
+    const confirmation = confirm('Voulez vous supprimé le client ?');
+    if(confirmation){
+      return this.apiClient.deleteClient(id).subscribe(res=>{
       this.toarst.success("Client supprimé avec success!");
       this.getAllClient();
-    })
-  }
-  onChange(e:any){
-    this.filterName=e.target.value;
-    this.showData=false;
-    this.dataClient.filter((element:any)=>{
-      if(element.category==this.filterName.toLowerCase())
-      {
-        this.filterData.push(element);
-      }
-    });
-    console.log(this.filterData);
+    },
+
+    (error)=>{
+      this.toarst.error('Une erreur est survenue');
+      console.error('Erreur lors de la suppression');
+     });
+    }
+    return false;
 
   }
 }

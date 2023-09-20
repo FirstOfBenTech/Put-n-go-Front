@@ -1,1 +1,70 @@
-<p>caisse works!</p>
+<form [formGroup]="caisseForm">
+<ng-container>
+  <div class="m-3 table-responsive">
+  <table class="table table-bordered border-none table-dark table-striped">
+    <thead>
+      <tr>
+       <th scope="col" colspan="3" class="text-warning text-center">ENTREE</th>
+      <th scope="col" colspan="3" class="text-warning text-center">SORTIE</th>
+      </tr>
+      <tr>
+        <th scope="col" class="text-warning">DATE</th>
+        <th scope="col" class="text-warning">LIBELLE ENTREE</th>
+        <th scope="col" class="text-warning">MONTANT</th>
+        <th scope="col" class="text-warning">LIBELLE SORTIE</th>
+        <th scope="col" class="text-warning">MONTANT</th>
+        <th scope="col" class="text-warning">OPT</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>
+          <div class="input-group">
+            <input type="date" class="form-control" formControlName="date">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="libelleEntree" placeholder="saisir le libelle">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="number" class="form-control" formControlName="montantEntree" placeholder="saisir le montant">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="text" class="form-control" formControlName="libelleSortie" placeholder="saisir le libelle">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <input type="number" class="form-control" formControlName="montantSortie" placeholder="saisir le montant">
+          </div>
+        </td>
+        <td>
+          <button type="button" class="btn btn-success" (click)="addCaisse(caisseForm.value)">
+            ++
+          </button>
+        </td>
+      </tr>
+      <tr class="" *ngFor="let caisse of caisseData">
+        <td class="bg-gradient">{{caisse.date}}</td>
+        <td class="bg-gradient">{{caisse.libelleEntree}}</td>
+        <td class="bg-gradient">{{caisse.montantEntree}}</td>
+        <td class="bg-gradient">{{caisse.libelleSortie}}</td>
+        <td colspan="2" class="bg-gradient">{{caisse.montantSortie}}</td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+</ng-container>
+</form>
+<div class="text-center"><h2>TOTAL : <strong class="text-warning">{{total}}</strong></h2></div>
+
+<!-- <ng-container>
+   <h5 class="text-white mx-3">La liste est vide !</h5>
+</ng-container> -->

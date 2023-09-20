@@ -2,9 +2,17 @@ export class commande
 {
   clientId?:number;
   date?:Date;
-  modeleId?:number;
-  quantite?:string;
+  modeles?:modeleQuantite[];
   avance?:string;
   remise?:string;
   valide:boolean=false;
+  livre:boolean=false;
+  total?:number;
+}
+
+export class modeleQuantite
+{
+  modeleId?:number;
+  quantite?:number;
+  totalModele?:number;
 }

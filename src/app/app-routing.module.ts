@@ -11,43 +11,80 @@ import { CommandeEnCoursComponent } from './admin/component/commande-en-cours/co
 import { CommandeTermineComponent } from './admin/component/commande-termine/commande-termine.component';
 import { ComptabiliteComponent } from './admin/component/comptabilite/comptabilite.component';
 import { FacturationComponent } from './admin/component/facturation/facturation.component';
+import { LoginComponent } from './admin/component/login/login.component';
+import { SignupComponent } from './admin/component/signup/signup.component';
+import { ParametreComponent } from './admin/component/parametre/parametre.component';
+import { CommandeLivreComponent } from './admin/component/commande-livre/commande-livre.component';
+import { UpdateCommandeComponent } from './admin/component/update-commande/update-commande.component';
+import { CaisseComponent } from './admin/component/caisse/caisse.component';
+import { SalaireComponent } from './admin/component/salaire/salaire.component';
+import { AutrefactureComponent } from './admin/component/autrefacture/autrefacture.component';
+import { GeneraleComponent } from './admin/component/generale/generale.component';
+import { authGuard } from './admin/login/auth.guard';
 
 const routes: Routes = [
   {
-    path:'',redirectTo:'dashboard',pathMatch:'full'
+    path:'',redirectTo:'login',pathMatch:'full'
   },
   {
-    path:'dashboard',component:DashboardComponent
+    path:'login',component:LoginComponent
   },
   {
-    path:'boutique',component:BoutiqueComponent
+    path:'signup',component:SignupComponent
   },
   {
-    path:'itemBoutique',component:ItemBoutiqueComponent
+    path:'dashboard',component:DashboardComponent,canActivate:[authGuard]
   },
   {
-    path:'client',component:ClientComponent
+    path:'boutique',component:BoutiqueComponent,canActivate:[authGuard]
   },
   {
-    path:'updateClient/:id',component:UpdateClientComponent
+    path:'itemBoutique',component:ItemBoutiqueComponent,canActivate:[authGuard]
   },
   {
-    path:'commandeEnCours',component:CommandeEnCoursComponent
+    path:'client',component:ClientComponent,canActivate:[authGuard]
   },
   {
-    path:'commandeTermine',component:CommandeTermineComponent
+    path:'updateClient/:id',component:UpdateClientComponent,canActivate:[authGuard]
   },
   {
-    path:'stock',component:StockComponent
+    path:'commandeEnCours',component:CommandeEnCoursComponent,canActivate:[authGuard]
   },
   {
-    path:'mesboutiques',component:MesboutiquesComponent
+    path:'commandeTermine',component:CommandeTermineComponent,canActivate:[authGuard]
   },
   {
-    path:'comptabilite',component:ComptabiliteComponent
+    path:'commandeLivre',component:CommandeLivreComponent,canActivate:[authGuard]
   },
   {
-    path:'facturation',component:FacturationComponent
+    path:'updateCommande/:id',component:UpdateCommandeComponent,canActivate:[authGuard]
+  },
+  {
+    path:'stock',component:StockComponent,canActivate:[authGuard]
+  },
+  {
+    path:'mesboutiques',component:MesboutiquesComponent,canActivate:[authGuard]
+  },
+  {
+    path:'comptabilite',component:ComptabiliteComponent,canActivate:[authGuard]
+  },
+  {
+    path:'facturation',component:FacturationComponent,canActivate:[authGuard]
+  },
+  {
+    path:'parametre',component:ParametreComponent,canActivate:[authGuard]
+  },
+  {
+    path:'caisse',component:CaisseComponent,canActivate:[authGuard]
+  },
+  {
+    path:'general',component:GeneraleComponent,canActivate:[authGuard]
+  },
+  {
+    path:'salaire',component:SalaireComponent,canActivate:[authGuard]
+  },
+  {
+    path:'autrefacture',component:AutrefactureComponent,canActivate:[authGuard]
   }
 ];
 

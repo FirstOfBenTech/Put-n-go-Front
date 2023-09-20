@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from './admin/service/login.service';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private loginApi:LoginService){}
+
+  showsidebar=true;
+  infoData:any;
   title = 'couture';
   status: boolean = false;
   clickEvent(){
-      this.status = !this.status;
+    this.status = !this.status;
   }
+
 }

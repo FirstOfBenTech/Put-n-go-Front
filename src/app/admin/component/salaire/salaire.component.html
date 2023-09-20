@@ -1,1 +1,90 @@
-<p>salaire works!</p>
+<!-- <h4 class="mb-3">Gestions des Clients</h4> -->
+<div class="d-flex justify-content-between">
+  <button class="btn btn-warning mt-2" (click)="navigatePrevious()" style="height: 37px; width: 35px;"><i class="fa fa-reply"></i></button>
+  <button type="button" class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <i class="fas fa-user-plus p-1"></i>
+  </button>
+</div>
+
+<!-- Modal Ajout Client-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter un client</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row mb-3">
+            <div class="col input-group">
+              <span class="input-group-text" id="basic-addon1">Matricule</span>
+              <input type="text" class="form-control" formControlName="matricule" placeholder="Matricule">
+            </div>
+            <div class="col input-group">
+              <span class="input-group-text" id="basic-addon1">Nom</span>
+              <input type="text" class="form-control" formControlName="nom" placeholder="Nom ">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col input-group">
+              <span class="input-group-text" id="basic-addon1">Prenom</span>
+              <input type="number" class="form-control" formControlName="prenom" placeholder="Prenom">
+            </div>
+            <div class="col input-group">
+              <span class="input-group-text" id="basic-addon1">Salaire</span>
+              <input type="text" class="form-control" formControlName="salaire" placeholder="Salaire">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-success">
+          Enregistrer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-----LISTER CLIENTS------------------>
+  <ng-container>
+    <div class="m-3 table-responsive">
+    <table class="table table-bordered table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col"class="text-warning">MATRICULE</th>
+          <th scope="col"class="text-warning">NOM</th>
+          <th scope="col" class="text-warning">PRENOM</th>
+          <th scope="col"class="text-warning">SALAIRE</th>
+          <th colspan="2"class="text-warning">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>matricule</td>
+          <td>nom</td>
+          <td>prenom</td>
+          <td>salaire</td>
+          <div class="d-flex justify-content-start">
+            <td><button class="btn btn-warning mx-2"><i class="fas fa-edit"></i></button></td>
+          <td><button class="btn btn-danger"><i class="fas fa-archive"></i></button></td>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </ng-container>
+  <div class="text-center"><h4>TOTAL : <strong class="text-warning">20000</strong></h4></div>
+
+  <!-- <ng-container *ngIf="dataClient?.length==0">
+     <h5 class="text-white mx-3">La liste est vide !</h5>
+  </ng-container> -->
+
+
+
+
+
