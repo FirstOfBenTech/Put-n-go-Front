@@ -18,11 +18,12 @@ export class ClientComponent implements OnInit{
   filterData:any=[];
   showData:any;
   idRoute:any;
-  dataClient:Array<client>|any;
+  dataClient:any;
   newdataClient?:Array<client>;
   nombreClient:any;
   pageNumber:number=1;
   pageSize:number=10;
+  loading: boolean = true;
   //dataClient:undefined|client[];
 
   clientForm:FormGroup |any;
@@ -61,10 +62,11 @@ export class ClientComponent implements OnInit{
   getAllClient(){
     this.apiClient.getClient().subscribe(res=>{
       this.dataClient=res;
-      this.showData=true;
       this.nombreClient=this.dataClient.length;
+      this.loading=false;
     },
      (error)=>{
+      this.loading=false;
       this.toarst.error('Une erreur est survenue');
       console.error('Erreur lors de l ajout');
 
@@ -79,7 +81,6 @@ export class ClientComponent implements OnInit{
       this.toarst.success("Client supprimé avec success!");
       this.getAllClient();
     },
-
     (error)=>{
       this.toarst.error('Une erreur est survenue');
       console.error('Erreur lors de la suppression');

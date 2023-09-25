@@ -24,60 +24,57 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="commandeEncoursForm">
-          <div class="row mb-5">
+          <div class="row mb-3">
+            <div class="col input-group">
+              <input type="date" name="deliveryDate" id="" class="form-control" formControlName="deliveryDate">
+            </div>
             <div class="col">
-              <select class="form-select" aria-label="Choisir un Client" formControlName="clientId">
-                <option selected>Choisir un Client</option>
-                <option *ngFor="let client of clientData" [value]="client.id" class="text-black">{{client.prenom}} {{client.nom}}</option>
+              <select class="form-select" aria-label="Choisir un Client" formControlName="deliveryShop">
+                <option selected>Choisir une Boutique</option>
+                <option *ngFor="let shop of shopData" [value]="shop._id" class="text-black">{{shop.manager.firstName}}</option>
               </select>
             </div>
-            <div class="col input-group">
-              <input type="date" name="date" id="" class="form-control" formControlName="date">
-            </div>
           </div>
-          <div class="row mb-5" formArrayName="modeles">
-            <div class="row" *ngFor="let modele of modeles.controls;let i = index" [formGroupName]="i">
-              <div class="col">
-                <!-- <select multiple [(ngModel)]="selectedItems" class="form-select" aria-label="Choisir un Modele" formControlName="modeleId"> -->
-                <select [id]="'modeleId' + i" class="form-select" aria-label="Choisir un Modele" formControlName="modeleId">
-                  <option selected>Choisir un Modele</option>
-                  <option *ngFor="let produit of produitData" [value]="produit.id" class="text-black">{{produit.libelle}}</option>
-                </select>
-              </div>
-              <div class="col input-group">
-                <span class="input-group-text bg-black text-warning" >Qnte</span>
-                <input type="number" [id]="'quantite' + i" class="form-control" placeholder="Saisir la quantite" formControlName="quantite">
-                <div class="mx-2">
-                  <button class="btn btn-warning" (click)="creerModele()"><i class="fas fa-plus-circle p-1"></i></button>
-                </div>
-              </div>
-              <div class="d-flex justify-content-sm-evenly mt-3">
-                <button class="btn btn-success" (click)="onSelectedProduct(produitData[i])"><i class="fa fa-eye"></i></button>
-              </div>
-              <div class="" *ngIf="selectedProduit===produitData[i]">
-                <p>Produit : {{selectedProduit?.libelle}}</p>
-                <!-- <p>Quantite {{productControl.get('quantite').value}}</p> -->
-              </div>
-            </div>
-          </div>
-          <div class="row mb-5">
+          <div class="row mb-3">
             <div class="col input-group">
               <span class="input-group-text bg-black text-warning">Avance</span>
-              <input type="number" class="form-control" placeholder="Saisir l'avance" formControlName="avance">
+              <input type="number" class="form-control" placeholder="Saisir l'avance" formControlName="advance">
             </div>
             <div class="col input-group">
               <span class="input-group-text bg-black text-warning">Remise</span>
-              <input type="number" class="form-control" placeholder="Saisir l'avance" formControlName="remise">
+              <input type="number" class="form-control" placeholder="Saisir l'avance" formControlName="discount">
             </div>
           </div>
-          <!-- <div class="text-center">
-            <h5>Total: <strong class="text-warning">25000</strong></h5>
-          </div> -->
+          <div class="row mb-3">
+            <div formArrayName="products">
+              <div *ngFor="let product of products.controls; let i = index" class="mb-3">
+                <div [formGroupName]="i">
+                  <h4>Produit {{ i + 1 }}</h4>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <select class="form-select" aria-label="Choisir un Client" id="productName" formControlName="name">
+                        <option selected>Choisir un produit</option>
+                        <option *ngFor="let produit of produitData" [value]="produit._id" class="text-black">{{produit.name}}</option>
+                      </select>
+                    </div>
+                    <div class="col input-group">
+                      <span class="input-group-text bg-black text-warning">Qnté</span>
+                      <input type="number" class="form-control" id="productQuantity" formControlName="quantity">
+                    </div>
+                    <div class="col">
+                      <button type="button" class="btn btn-danger" (click)="removeProduct(i)"><i class="fas fa-archive"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-success" (click)="addProduct()"><i class="fas fa-plus-circle p-1"></i>Produit</button>
+            </div>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-warning" (click)="submitCommande(this.commandeEncoursForm.value)" >Enregistrer</button>
+        <button type="button" class="btn btn-warning" (click)="submitCommande(commandeEncoursForm.value)" >Enregistrer</button>
       </div>
     </div>
   </div>
@@ -86,7 +83,7 @@
 
 
 <!----Liste des commandes----------------------->
-<ng-container *ngIf="commandeData.length!=0">
+<!-- <ng-container>
   <div class="m-3 table-responsive">
     <table class="table table-bordered border-warning table-dark table-striped">
       <thead>
@@ -102,19 +99,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let commande of commandeData">
-          <td>{{commande.date}}</td>
-          <td>{{commande.modeles}}</td>
-          <td>{{commande.quantite}}</td>
-          <td>{{commande.clientId}}</td>
-          <!-- <th>{{getClientName(commande.clientId)}}</th> -->
-          <td>{{commande.avance}}</td>
-          <td>{{commande.remise}}</td>
-          <td>400000</td>
-          <td><button class="btn btn-warning" routerLink="/updateCommande/{{commande.id}}"><i class="fas fa-edit"></i></button></td>
+        <tr *ngFor="let shop of shopData">
+          <td>{{shop.name}}</td>
+          <td>{{shop.manager.firstName}}</td>
+          <td>400000</td> -->
+          <!-- <td><button class="btn btn-warning" routerLink="/updateCommande/{{commande.id}}"><i class="fas fa-edit"></i></button></td>
           <td><button class="btn btn-danger" (click)="deleteCommande(commande.id)"><i class="fas fa-archive"></i></button></td>
-          <td><button class="btn btn-success" (click)="validerCommande(commande)"><i class="fa fa-thumbs-up"></i></button></td>
-        </tr>
+          <td><button class="btn btn-success" (click)="validerCommande(commande)"><i class="fa fa-thumbs-up"></i></button></td> -->
+        <!-- </tr>
       </tbody>
     </table>
   </div>
@@ -123,4 +115,7 @@
   <div class="">
     <h5 class="mx-2 text-white">La liste est vide pas de commande en cours</h5>
   </div>
-</ng-container>
+</ng-container> -->
+
+
+

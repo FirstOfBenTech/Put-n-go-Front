@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { commande } from '../model/commandemodel';
 import { Observable } from 'rxjs';
@@ -10,16 +10,35 @@ import { environment } from 'src/environments/environment.prod';
 export class CommandeApiService {
 
   private apiUrl = environment.apiUrl;
-  private apiUrl2="http://localhost:3000/commandes";
 
   constructor(private http:HttpClient) { }
 
   addCommande(data:commande){
-    return this.http.post<any>(`${this.apiUrl}/order`,data);
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.post<any>(`${this.apiUrl}/order`,data,{headers});
   }
 
   getCommande():Observable<commande[]> {
-    return this.http.get<commande[]>(this.apiUrl2);
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<commande[]>(this.apiUrl,{headers});
+  }
+  getAllCategorie():Observable<any>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl}/category`,{headers});
+  }
+  getAllProduit():Observable<any>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl}/product`,{headers});
+  }
+
+  getAllBoutique():Observable<any>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl}/shop`,{headers});
   }
   validerCommande(commandeId:number):Observable<commande>{
     return this.http.patch<commande>(this.apiUrl+'/'+commandeId,{valide:true});

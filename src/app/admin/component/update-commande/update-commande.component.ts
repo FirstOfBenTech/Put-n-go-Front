@@ -21,7 +21,6 @@ export class UpdateCommandeComponent implements OnInit{
 
   ngOnInit(): void {
     this.getAllClient();
-    this.getAllProduit();
     const confirmation = confirm('Voulez vous modifier la commmande ?');
     if(confirmation){
       this.idRoute=this.activeRoute.snapshot.paramMap.get('id');
@@ -44,11 +43,11 @@ export class UpdateCommandeComponent implements OnInit{
       this.clientData=res;
     })
   }
-  getAllProduit(){
-    this.produitItems.getAllProduit().subscribe(produit=>{
-       this.produitData=produit;
-    })
-  }
+  // getAllProduit(){
+  //   this.produitItems.getAllProduit().subscribe(produit=>{
+  //      this.produitData=produit;
+  //   })
+  // }
   selectedOption(e:any){
     e.target.value;
   }

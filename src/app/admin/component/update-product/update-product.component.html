@@ -1,0 +1,62 @@
+<button class="btn btn-dark mt-2 mx-2"><a href="" routerLink="/produit" class="text-warning">Retour</a></button>
+<div class="card m-5">
+  <div class="card-header bg-warning text-center">Afficher un produit</div>
+  <div class="card-body">
+    <form>
+      <div class="row mb-3">
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">Name</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.name" name="name">
+        </div>
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">Price</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.price" name="price">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">Taille</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.taille" name="createdAt">
+        </div>
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">Quantite</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.quantity" name="updatedAt">
+        </div>
+
+      </div>
+      <div class="row mb-3">
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">Categorie</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.category.name" name="Name">
+        </div>
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">Description</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.category.description" name="description">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">Boutique</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.shopId.name" name="phone">
+        </div>
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">FirstName</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.shopId.manager.firstName" name="username">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">Boutique</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.shopId.name" name="phone">
+        </div>
+        <div class="col input-group">
+          <span class="input-group-text" id="basic-addon1">Username</span>
+          <input type="text" class="form-control" [(ngModel)]="produitData.shopId.manager.firstName" name="username">
+        </div>
+      </div>
+    </form>
+  </div>
+  <button type="button" class="btn btn-success mx-auto my-2" (click)="updateBoutique()">
+    Modifier
+  </button>
+</div>

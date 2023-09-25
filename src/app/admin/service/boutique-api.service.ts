@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { categorie } from '../model/categoriemodel';
 import { commande } from '../model/commandemodel';
 import { Observable } from 'rxjs';
@@ -10,16 +10,36 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class BoutiqueApiService {
 
-  private apiUrl2="http://localhost:3000/categorie";
   private apiUrl = environment.apiUrl;
 
   constructor(private http:HttpClient) { }
 
   addCategorie(data:any){
-    return this.http.post<any>(`${this.apiUrl}/shop`,data);
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.post<any>(`${this.apiUrl}/category`,data,{headers});
   }
 
-  getAllCategorie():Observable<commande[]>{
-    return this.http.get<commande[]>(this.apiUrl2);
+  getAllCategorie():Observable<any>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl}/category`,{headers});
+  }
+
+  getCategorie(id:string):Observable<any>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl}/category/${id}`,{headers});
+  }
+
+  updateCategorie(data:any,id:string){
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.patch<any>(`${this.apiUrl}/category/${id}`,data,{headers});
+  }
+  deleteCategorie(id:string){
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.delete<any>(`${this.apiUrl}/category/${id}`,{headers});
   }
 }

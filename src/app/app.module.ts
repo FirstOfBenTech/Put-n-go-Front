@@ -28,6 +28,13 @@ import { ParametreComponent } from './admin/component/parametre/parametre.compon
 import { CommandeLivreComponent } from './admin/component/commande-livre/commande-livre.component';
 import { UpdateCommandeComponent } from './admin/component/update-commande/update-commande.component';
 import { GeneraleComponent } from './admin/component/generale/generale.component';
+import { ViewBoutiqueComponent } from './admin/component/view-boutique/view-boutique.component';
+import { UpdateBoutiqueComponent } from './admin/component/update-boutique/update-boutique.component';
+import { UpdateBoutiqueCategorieComponent } from './admin/component/update-boutique-categorie/update-boutique-categorie.component';
+import { ProduitComponent } from './admin/component/produit/produit.component';
+import { UpdateProductComponent } from './admin/component/update-product/update-product.component';
+import { CommandeComponent } from './admin/component/commande/commande.component';
+import { ViewProduitComponent } from './admin/component/view-produit/view-produit.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +60,13 @@ import { GeneraleComponent } from './admin/component/generale/generale.component
     CommandeLivreComponent,
     UpdateCommandeComponent,
     GeneraleComponent,
+    ViewBoutiqueComponent,
+    UpdateBoutiqueComponent,
+    UpdateBoutiqueCategorieComponent,
+    ProduitComponent,
+    UpdateProductComponent,
+    CommandeComponent,
+    ViewProduitComponent,
   ],
   imports: [
     BrowserModule,

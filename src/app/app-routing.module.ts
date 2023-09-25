@@ -21,6 +21,13 @@ import { SalaireComponent } from './admin/component/salaire/salaire.component';
 import { AutrefactureComponent } from './admin/component/autrefacture/autrefacture.component';
 import { GeneraleComponent } from './admin/component/generale/generale.component';
 import { authGuard } from './admin/login/auth.guard';
+import { ViewBoutiqueComponent } from './admin/component/view-boutique/view-boutique.component';
+import { UpdateBoutiqueComponent } from './admin/component/update-boutique/update-boutique.component';
+import { UpdateBoutiqueCategorieComponent } from './admin/component/update-boutique-categorie/update-boutique-categorie.component';
+import { ProduitComponent } from './admin/component/produit/produit.component';
+import { UpdateProductComponent } from './admin/component/update-product/update-product.component';
+import { CommandeComponent } from './admin/component/commande/commande.component';
+import { ViewProduitComponent } from './admin/component/view-produit/view-produit.component';
 
 const routes: Routes = [
   {
@@ -39,7 +46,7 @@ const routes: Routes = [
     path:'boutique',component:BoutiqueComponent,canActivate:[authGuard]
   },
   {
-    path:'itemBoutique',component:ItemBoutiqueComponent,canActivate:[authGuard]
+    path:'product/category/:category',component:ItemBoutiqueComponent,canActivate:[authGuard]
   },
   {
     path:'client',component:ClientComponent,canActivate:[authGuard]
@@ -85,7 +92,28 @@ const routes: Routes = [
   },
   {
     path:'autrefacture',component:AutrefactureComponent,canActivate:[authGuard]
-  }
+  },
+  {
+    path:'viewBoutique/:id',component:ViewBoutiqueComponent,canActivate:[authGuard]
+  },
+  {
+    path:'updateBoutique/:id',component:UpdateBoutiqueComponent,canActivate:[authGuard]
+  },
+  {
+    path:'updateBoutiqueCategorie/:id',component:UpdateBoutiqueCategorieComponent,canActivate:[authGuard]
+  },
+  {
+    path:'produit',component:ProduitComponent,canActivate:[authGuard]
+  },
+  {
+    path:'updateProduct/:id',component:UpdateProductComponent,canActivate:[authGuard]
+  },
+  {
+    path:'commande',component:CommandeComponent,canActivate:[authGuard]
+  },
+  {
+    path:'viewProduit/:id',component:ViewProduitComponent,canActivate:[authGuard]
+  },
 ];
 
 @NgModule({

@@ -3,7 +3,6 @@
   data-bs-target="#exampleModal">
   <i class="fas fa-plus-circle p-1"></i>Categorie
 </button>
-  <button (click)="getAllProduct()">Click</button>
 
 <div class="container mt-3">
   <div class="card mb-3 bg-warning" style="width: 18rem;" *ngFor="let product of Categorie">
@@ -15,6 +14,24 @@
     </div>
   </div>
 <!-- </div> -->
+<button (click)="getAllBoutique()">Shop</button>
+<button (click)="getClient()">Client</button>
+<div class="col">
+  <select name="" id="">
+    <option selected>Boutique</option>
+    <option *ngFor="let boutique of boutiqueData" [value]="boutique._id">{{boutique.manager.firstName}}</option>
+  </select>
+</div>
+<div class="col">
+  <select class="form-select" aria-label="Choisir une Boutique" formControlName="shopId">
+    <option selected>Choisir une boutique</option>
+    <option *ngFor="let shop of boutiqueData" [value]="shop._id" class="text-black">{{shop._id}}</option>
+  </select>
+</div>
+</div>
+<ul>
+  <li *ngFor="let client of clientData">{{client.firstName}}</li>
+</ul>
 
 
 <!-- Modal Ajout Categorie Stock-->
