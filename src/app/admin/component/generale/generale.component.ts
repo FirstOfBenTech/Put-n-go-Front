@@ -11,6 +11,7 @@ export class GeneraleComponent implements OnInit{
   totalEntree:number=0;
   totalSortie:number=0;
    caisseData:any;
+   total:any;
   ngOnInit(): void {
     this.getCaisse();
 
@@ -18,20 +19,23 @@ export class GeneraleComponent implements OnInit{
   constructor(private apiCompt:ComptabiliteService){}
 
   getCaisse(){
-    this.apiCompt.getCaisse().subscribe(res=>{
+    this.apiCompt.getAllCaisse().subscribe(res=>{
       this.caisseData=res;
       this.calculTotal();
     });
   }
   calculTotal(){
     this.totalEntree=this.caisseData.reduce((acc:any,totalCaisse:any)=>{
-      return acc+totalCaisse.montantEntree;
+      return acc+totalCaisse.entree;
     },0);
 
     this.totalSortie=this.caisseData.reduce((acc:any,totalCaisse:any)=>{
-      return acc+totalCaisse.montantSortie;
+      return acc+totalCaisse.sortie;
     },0);
-
+    
+    this.total=this.caisseData.reduce((acc:any,totalCaisse:any)=>{
+      return acc+(totalCaisse.entree-totalCaisse.sortie);
+    },0);
   }
 
 }

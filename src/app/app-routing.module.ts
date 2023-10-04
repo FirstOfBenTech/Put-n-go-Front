@@ -83,7 +83,7 @@ const routes: Routes = [
     path:'general',component:GeneraleComponent,canActivate:[authGuard]
   },
   {
-    path:'salaire',component:SalaireComponent,canActivate:[authGuard]
+    path:'employee',component:SalaireComponent,canActivate:[authGuard]
   },
   {
     path:'autrefacture',component:AutrefactureComponent,canActivate:[authGuard]

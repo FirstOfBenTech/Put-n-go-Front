@@ -16,4 +16,10 @@ export class StockApiService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
     return this.http.get<any>(`${this.apiUrl}/product/stock`,{headers});
   }
+
+  getInforProduct(id:string):Observable<any>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl}/product/stock/${id}`,{headers});
+  }
 }

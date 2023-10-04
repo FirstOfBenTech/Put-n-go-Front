@@ -5,15 +5,15 @@
     <thead>
       <tr>
        <th scope="col" colspan="3" class="text-warning text-center">ENTREE</th>
-      <th scope="col" colspan="3" class="text-warning text-center">SORTIE</th>
+      <th scope="col" colspan="4" class="text-warning text-center">SORTIE</th>
       </tr>
       <tr>
-        <th scope="col" class="text-warning">DATE</th>
         <th scope="col" class="text-warning">LIBELLE ENTREE</th>
         <th scope="col" class="text-warning">MONTANT</th>
         <th scope="col" class="text-warning">LIBELLE SORTIE</th>
         <th scope="col" class="text-warning">MONTANT</th>
-        <th scope="col" class="text-warning">OPT</th>
+        <th scope="col" class="text-warning">Boutique</th>
+        <th scope="col" colspan="2" class="text-warning">OPT</th>
       </tr>
     </thead>
     <tbody>
@@ -21,17 +21,12 @@
       <tr>
         <td>
           <div class="input-group">
-            <input type="date" class="form-control" formControlName="date">
-          </div>
-        </td>
-        <td>
-          <div class="input-group">
             <input type="text" class="form-control" formControlName="libelleEntree" placeholder="saisir le libelle">
           </div>
         </td>
         <td>
           <div class="input-group">
-            <input type="number" class="form-control" formControlName="montantEntree" placeholder="saisir le montant">
+            <input type="number" class="form-control" formControlName="entree" placeholder="saisir le montant">
           </div>
         </td>
         <td>
@@ -41,21 +36,32 @@
         </td>
         <td>
           <div class="input-group">
-            <input type="number" class="form-control" formControlName="montantSortie" placeholder="saisir le montant">
+            <input type="number" class="form-control" formControlName="sortie" placeholder="saisir le montant">
           </div>
         </td>
         <td>
+          <select class="form-select" aria-label="Choisir un Client" formControlName="shopId">
+            <option selected>Choisir un Client</option>
+            <option *ngFor="let shop of shopData" value="{{shop._id}}" class="text-black">{{shop.name}}</option>
+          </select>
+        </td>
+        <td colspan="2">
           <button type="button" class="btn btn-success" (click)="addCaisse(caisseForm.value)">
             ++
           </button>
         </td>
       </tr>
-      <tr class="" *ngFor="let caisse of caisseData">
-        <td class="bg-gradient">{{caisse.date}}</td>
+      <tr class="" *ngFor="let caisse of caisseData" class="text-container">
+        <td class="bg-gradient text">
+          {{caisse.dateAjout}}
+        </td>
         <td class="bg-gradient">{{caisse.libelleEntree}}</td>
-        <td class="bg-gradient">{{caisse.montantEntree}}</td>
+        <td class="bg-gradient">{{caisse.entree}}</td>
         <td class="bg-gradient">{{caisse.libelleSortie}}</td>
-        <td colspan="2" class="bg-gradient">{{caisse.montantSortie}}</td>
+        <td class="bg-gradient">{{caisse.sortie}}</td>
+        <td class="bg-gradient">{{caisse.montantSortie}}</td>
+        <!-- <td class="bg-gradient">{{caisse.shopId}}</td> -->
+        <td><button class="btn btn-danger bg-gradient" (click)="deleteCaisse(caisse._id)"><i class="fas fa-archive"></i></button></td>
       </tr>
     </tbody>
 
@@ -63,7 +69,11 @@
 </div>
 </ng-container>
 </form>
-<div class="text-center"><h2>TOTAL : <strong class="text-warning">{{total}}</strong></h2></div>
+<div class="container d-flex justify-content-evenly">
+  <div class="text mx-3"><h4>TOTAL ENTREE: <strong class="text-warning">{{totalEntree}}</strong></h4></div>
+  <div class="text"><h4>TOTAL SORTIE: <strong class="text-warning">{{totalSortie}}</strong></h4></div>
+</div>
+<div class="text-center mt-3"><h2>TOTAL: <strong class="text-warning">{{total}}</strong></h2></div>
 
 <!-- <ng-container>
    <h5 class="text-white mx-3">La liste est vide !</h5>

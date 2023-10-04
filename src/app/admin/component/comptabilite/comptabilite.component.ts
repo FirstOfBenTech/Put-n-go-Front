@@ -19,7 +19,7 @@ export class ComptabiliteComponent implements OnInit{
     this.router.navigate(["/general"]);
   }
   navigateSalaire(){
-    this.router.navigate(['/salaire']);
+    this.router.navigate(['/employee']);
   }
   navigateAutreFact(){
     this.router.navigate(['/autrefacture']);

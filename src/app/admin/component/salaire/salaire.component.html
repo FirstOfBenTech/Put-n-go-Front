@@ -1,6 +1,6 @@
 <!-- <h4 class="mb-3">Gestions des Clients</h4> -->
 <div class="d-flex justify-content-between">
-  <button class="btn btn-warning mt-2" (click)="navigatePrevious()" style="height: 37px; width: 35px;"><i class="fa fa-reply"></i></button>
+  <button class="btn btn-warning mt-2 mx-1" (click)="navigatePrevious()" style="height: 37px; width: 35px;"><i class="fa fa-reply"></i></button>
   <button type="button" class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
     <i class="fas fa-user-plus p-1"></i>
   </button>
@@ -20,22 +20,22 @@
         <form>
           <div class="row mb-3">
             <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">Matricule</span>
-              <input type="text" class="form-control" formControlName="matricule" placeholder="Matricule">
+              <span class="input-group-text" id="basic-addon1">Prenom</span>
+              <input type="text" class="form-control" formControlName="firstName" placeholder="firstName">
             </div>
             <div class="col input-group">
               <span class="input-group-text" id="basic-addon1">Nom</span>
-              <input type="text" class="form-control" formControlName="nom" placeholder="Nom ">
+              <input type="number" class="form-control" formControlName="lastName" placeholder="LastName">
             </div>
           </div>
           <div class="row mb-3">
             <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">Prenom</span>
-              <input type="number" class="form-control" formControlName="prenom" placeholder="Prenom">
+              <span class="input-group-text" id="basic-addon1">Phone</span>
+              <input type="text" class="form-control" formControlName="phone" placeholder="Phone">
             </div>
             <div class="col input-group">
               <span class="input-group-text" id="basic-addon1">Salaire</span>
-              <input type="text" class="form-control" formControlName="salaire" placeholder="Salaire">
+              <input type="text" class="form-control" formControlName="salary" placeholder="Salaire">
             </div>
           </div>
         </form>
