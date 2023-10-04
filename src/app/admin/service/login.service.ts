@@ -15,6 +15,9 @@ export class LoginService {
   addUser(data:any):Observable<any>{
     return this.http.post(`${this.apiUrl}/user`,data);
   }
+  accueil():Observable<any>{
+    return this.http.get(`${this.apiUrl}/`);
+  }
 
   getAllUser():Observable<any>{
     const authToken = localStorage.getItem('access_token');
