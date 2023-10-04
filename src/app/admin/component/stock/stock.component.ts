@@ -21,8 +21,6 @@ export class StockComponent implements OnInit{
   getAllProduct(){
     this.apiStock.getAllProduct().subscribe(res=>{
       this.stockData=res;
-      console.log(this.stockData);
-
     })
   }
 }
