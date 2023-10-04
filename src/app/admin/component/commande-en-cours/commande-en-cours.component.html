@@ -45,7 +45,7 @@
               <input type="number" class="form-control" placeholder="Saisir l'avance" formControlName="discount">
             </div>
           </div>
-          <div class="col">
+          <div class="col mb-3">
             <select class="form-select" aria-label="Choisir un Client" formControlName="shopId">
               <option selected>Boutique de livraison</option>
               <option *ngFor="let shop of shopData" [value]="shop._id" class="text-black">{{shop.manager.firstName}}</option>

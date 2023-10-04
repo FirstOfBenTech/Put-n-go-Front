@@ -59,7 +59,6 @@ constructor(private router:Router,private apiClient:ClientApiService,private for
   getAllBoutique(){
     this.apiCommande.getAllBoutique().subscribe(res=>{
       this.shopData=res;
-      console.log(this.shopData);
     })
   }
   getCategory(){

@@ -65,9 +65,6 @@ const routes: Routes = [
     path:'updateCommande/:id',component:UpdateCommandeComponent,canActivate:[authGuard]
   },
   {
-    path:'stock',component:StockComponent,canActivate:[authGuard]
-  },
-  {
     path:'mesboutiques',component:MesboutiquesComponent,canActivate:[authGuard]
   },
   {
@@ -111,6 +108,9 @@ const routes: Routes = [
   },
   {
     path:'product/shop/:shopId',component:ProductShopComponent,canActivate:[authGuard]
+  },
+  {
+    path:'product/stock',component:StockComponent,canActivate:[authGuard]
   },
   {
     path:'**',component:NotFoundComponent

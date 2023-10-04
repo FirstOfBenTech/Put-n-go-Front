@@ -10,34 +10,18 @@ import { StockApiService } from '../../service/stock-api.service';
 export class StockComponent implements OnInit{
 
   ngOnInit(): void {
-    this.getAllBoutique();
-    // this.getAllProduct();
+    this.getAllProduct();
   }
    constructor(private apiProduit:ProduitApiService,private apiStock:StockApiService){}
    Categorie:any;
   countCategorie:any;
-  boutiqueData:any;
+  stockData:any;
   clientData:any;
 
-  // getAllProduct(){
-  //   this.apiProduit.getAllProduit().subscribe(res=>{
-  //     this.Categorie=res;
-  //   });
-    // this.countCategorie=this.Categorie.length;
-    // console.log(this.Categorie);
-
-  // }
-  getAllBoutique(){
-    this.apiStock.getAllBoutique().subscribe(res=>{
-      this.boutiqueData=res;
-      console.log(this.boutiqueData);
-
-    })
-  }
-  getClient(){
-    this.apiStock.getClient().subscribe(res=>{
-      this.clientData=res;
-      console.log(this.clientData);
+  getAllProduct(){
+    this.apiStock.getAllProduct().subscribe(res=>{
+      this.stockData=res;
+      console.log(this.stockData);
 
     })
   }

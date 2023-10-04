@@ -11,16 +11,9 @@ export class StockApiService {
 
   constructor(private http:HttpClient) { }
 
-  getAllProduct(){
-  }
-  getAllBoutique():Observable<any>{
+  getAllProduct():Observable<any>{
     const authToken = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
-    return this.http.get<any>(`${this.apiUrl}/shop`,{headers});
-  }
-  getClient():Observable<any>{
-    const authToken = localStorage.getItem('access_token');
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
-    return this.http.get<any>(`${this.apiUrl}/client`,{headers});
+    return this.http.get<any>(`${this.apiUrl}/product/stock`,{headers});
   }
 }

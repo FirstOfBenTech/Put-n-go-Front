@@ -35,7 +35,7 @@ export class ProductShopComponent {
 
   }
   navigatePrevious(){
-    this.route.navigate(['/boutique']);
+    this.route.navigate(['/mesboutiques']);
   }
 
 }
