@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ComptabiliteService } from '../../service/comptabilite.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { MesBoutiquesApiService } from '../../service/mes-boutiques-api.service';
 
 @Component({
   selector: 'app-salaire',
@@ -11,27 +12,31 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SalaireComponent implements OnInit{
 
- constructor(private router:Router,private apiComp:ComptabiliteService,private formbuilder:FormBuilder,private toastr:ToastrService){}
+ constructor(private router:Router,private apiComp:ComptabiliteService,private formbuilder:FormBuilder,private toastr:ToastrService,private apiShop:MesBoutiquesApiService){}
  employeForm:FormGroup|any;
  employeData:any;
+ shopData:any;
+
  ngOnInit(): void {
-  // this.getAllEmploye();
+   this.getAllEmployee();
+  this.getShop();
     this.employeForm=this.formbuilder.group({
       firstName:['',Validators.required],
       lastName:['',Validators.required],
       phone:['',Validators.required],
       salary:[0,Validators.required],
+      shopId:['',Validators.required]
     })
 }
  navigatePrevious(){
   this.router.navigate(['/comptabilite'])
  }
- 
+
  addEmploye(data:any){
   this.apiComp.addEmploye(data).subscribe(res=>{
     this.employeForm.reset();
     this.toastr.success('Employe Ajouté avec success !');
-    // this.getAllEmploye();
+    this.getAllEmployee();
   },
 
   (error)=>{
@@ -46,6 +51,11 @@ getAllEmployee(){
     (error)=>{
       this.toastr.error('Une erreur est survenue');
     });
+}
+getShop(){
+  this.apiShop.getAllBoutique().subscribe(res=>{
+    this.shopData=res;
+  })
 }
 
 }
