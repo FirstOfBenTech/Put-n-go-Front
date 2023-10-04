@@ -16,10 +16,12 @@ export class SalaireComponent implements OnInit{
  employeForm:FormGroup|any;
  employeData:any;
  shopData:any;
+ salaire:any;
 
  ngOnInit(): void {
    this.getAllEmployee();
   this.getShop();
+  this.comptaSalaire();
     this.employeForm=this.formbuilder.group({
       firstName:['',Validators.required],
       lastName:['',Validators.required],
@@ -56,6 +58,26 @@ getShop(){
   this.apiShop.getAllBoutique().subscribe(res=>{
     this.shopData=res;
   })
+}
+deleteEmploye(id:string){
+  const confirmation = confirm('Voulez vous supprimé le client ?');
+  if(confirmation){
+    return this.apiComp.deleteEmploye(id).subscribe(res=>{
+    this.toastr.success("EMploye supprimé avec success!");
+    this.getAllEmployee();
+  },
+  (error)=>{
+    this.toastr.error('Une erreur est survenue');
+    console.error('Erreur lors de la suppression');
+   });
+  }
+  return false;
+
+}
+comptaSalaire(){
+ this.apiComp.comptabiliteSalaire().subscribe(res=>{
+  this.salaire=res.totalSalary;
+ })
 }
 
 }

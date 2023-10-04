@@ -29,6 +29,7 @@ import { UpdateProductComponent } from './admin/component/update-product/update-
 import { ViewProduitComponent } from './admin/component/view-produit/view-produit.component';
 import { NotFoundComponent } from './admin/component/not-found/not-found.component';
 import { ProductShopComponent } from './admin/component/product-shop/product-shop.component';
+import { UpdateEmployeComponent } from './admin/component/update-employe/update-employe.component';
 
 const routes: Routes = [
   {
@@ -111,6 +112,9 @@ const routes: Routes = [
   },
   {
     path:'product/stock',component:StockComponent,canActivate:[authGuard]
+  },
+  {
+    path:'updateEmploye/:id',component:UpdateEmployeComponent,canActivate:[authGuard]
   },
   {
     path:'**',component:NotFoundComponent

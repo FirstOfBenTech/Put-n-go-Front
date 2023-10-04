@@ -46,7 +46,7 @@ export class ComptabiliteService {
     return this.http.get<any>(`${this.apiUrl}/employee`,{headers});
   }
 
-  deleteEMploye(id:string){
+  deleteEmploye(id:string){
     const authToken = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
     return this.http.delete<any>(`${this.apiUrl}/employee/${id}`, { headers });
@@ -62,5 +62,15 @@ export class ComptabiliteService {
     const authToken = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
     return this.http.patch<any>(`${this.apiUrl}/employee/${id}`,data,{headers});
+  }
+  comptabiliteSalaire(){
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl}/comptabilite/salaries`,{headers});
+  }
+  comptabiliteSalaireShop(id:string){
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl} /comptabilite/salaries/shop/${id}`,{headers});
   }
 }
