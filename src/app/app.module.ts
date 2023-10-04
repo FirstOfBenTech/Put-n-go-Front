@@ -33,8 +33,9 @@ import { UpdateBoutiqueComponent } from './admin/component/update-boutique/updat
 import { UpdateBoutiqueCategorieComponent } from './admin/component/update-boutique-categorie/update-boutique-categorie.component';
 import { ProduitComponent } from './admin/component/produit/produit.component';
 import { UpdateProductComponent } from './admin/component/update-product/update-product.component';
-import { CommandeComponent } from './admin/component/commande/commande.component';
 import { ViewProduitComponent } from './admin/component/view-produit/view-produit.component';
+import { NotFoundComponent } from './admin/component/not-found/not-found.component';
+import { ProductShopComponent } from './admin/component/product-shop/product-shop.component';
 
 @NgModule({
   declarations: [
@@ -65,19 +66,20 @@ import { ViewProduitComponent } from './admin/component/view-produit/view-produi
     UpdateBoutiqueCategorieComponent,
     ProduitComponent,
     UpdateProductComponent,
-    CommandeComponent,
     ViewProduitComponent,
+    NotFoundComponent,
+    ProductShopComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    NgbCarouselModule
+    NgbCarouselModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

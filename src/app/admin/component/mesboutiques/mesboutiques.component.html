@@ -49,9 +49,12 @@
         <h5 class="card-title text">Adresse : {{ boutique.addresse }}</h5>
         <p class="card-text text">Manager : <strong>{{ boutique.manager.firstName }} {{ boutique.manager.lastName }}</strong> </p>
         <p class="card-text text">Téléphone: <strong>{{ boutique.manager.phone }}</strong> </p>
-        <button class="btn btn-success mx-2" routerLink="/viewBoutique/{{boutique._id}}"><i class="fa fa-eye"></i></button>
-        <button class="btn btn-warning mx-2" routerLink="/updateBoutique/{{boutique._id}}"><i class="fas fa-edit"></i></button>
-        <button class="btn btn-danger mx-2" (click)="deleteBoutique(boutique._id)"><i class="fas fa-archive"></i></button>
+      <div class="d-flex">
+        <button class="btn btn-success mx-0" routerLink="/product/shop/{{boutique._id}}">P</button>
+        <button class="btn btn-success mx-1" routerLink="/viewBoutique/{{boutique._id}}"><i class="fa fa-eye"></i></button>
+        <button class="btn btn-warning mx-1" routerLink="/updateBoutique/{{boutique._id}}"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-danger mx-1" (click)="deleteBoutique(boutique._id)"><i class="fas fa-archive"></i></button>
+      </div>
       </div>
     </div>
   </div>

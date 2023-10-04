@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class LoginService {
   private apiUrl=environment.apiUrl;
-  // private apiUrl2="http://localhost:3000/user";
 
   constructor(private http:HttpClient) { }
 
@@ -17,12 +16,16 @@ export class LoginService {
     return this.http.post(`${this.apiUrl}/user`,data);
   }
 
-  getUser():Observable<any>{
+  getAllUser():Observable<any>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
     return this.http.get(`${this.apiUrl}/user`);
   }
 
-  getUserConnect(data:any):Observable<any>{
-    return this.http.post(`${this.apiUrl}/auth/login`,data);
+  getUser(id:string):Observable<any>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl}/user/${id}`,{headers});
   }
 
   fetchData(id:number){

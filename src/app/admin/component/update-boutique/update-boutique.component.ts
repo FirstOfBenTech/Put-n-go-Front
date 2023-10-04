@@ -12,8 +12,10 @@ export class UpdateBoutiqueComponent implements OnInit{
 
   idRoute:any;
   boutiqueData:any;
+  userData:any;
   constructor(private apiMesBoutiques:MesBoutiquesApiService,private activeRoute:ActivatedRoute,private toastr:ToastrService,private route:Router){}
 ngOnInit(): void {
+  this.getAllUser();
   this.idRoute=this.activeRoute.snapshot.paramMap.get('id');
   this.apiMesBoutiques.getBoutique(this.idRoute).subscribe(response=>{
     this.boutiqueData=response;
@@ -30,4 +32,16 @@ ngOnInit(): void {
     console.error('Erreur lors de la modification');
    })
  }
+ getAllUser(){
+  this.apiMesBoutiques.getUser().subscribe(response=>{
+    this.userData=response;
+  },
+  (error)=>{
+    console.error('Impossible de selectionner les utilisateurs');
+  }
+  )
+}
+navigatePrevious(){
+  this.route.navigate(['/mesboutiques']);
+}
 }

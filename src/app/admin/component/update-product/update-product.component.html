@@ -10,48 +10,32 @@
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Price</span>
-          <input type="text" class="form-control" [(ngModel)]="produitData.price" name="price">
+          <input type="number" class="form-control" [(ngModel)]="produitData.price" name="price">
         </div>
       </div>
       <div class="row mb-3">
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Taille</span>
-          <input type="text" class="form-control" [(ngModel)]="produitData.taille" name="createdAt">
+          <input type="text" class="form-control" [(ngModel)]="produitData.size" name="size">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Quantite</span>
-          <input type="text" class="form-control" [(ngModel)]="produitData.quantity" name="updatedAt">
+          <input type="number" class="form-control" [(ngModel)]="produitData.quantity" name="quantity">
         </div>
 
       </div>
       <div class="row mb-3">
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Categorie</span>
-          <input type="text" class="form-control" [(ngModel)]="produitData.category.name" name="Name">
+        <div class="col">
+          <select class="form-select" aria-label="Choisir une Boutique" name="shopId">
+            <option selected>Choisir une boutique</option>
+            <option *ngFor="let shop of shopData" [value]="shop._id" class="text-black">{{shop.name}}</option>
+          </select>
         </div>
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Description</span>
-          <input type="text" class="form-control" [(ngModel)]="produitData.category.description" name="description">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Boutique</span>
-          <input type="text" class="form-control" [(ngModel)]="produitData.shopId.name" name="phone">
-        </div>
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">FirstName</span>
-          <input type="text" class="form-control" [(ngModel)]="produitData.shopId.manager.firstName" name="username">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Boutique</span>
-          <input type="text" class="form-control" [(ngModel)]="produitData.shopId.name" name="phone">
-        </div>
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Username</span>
-          <input type="text" class="form-control" [(ngModel)]="produitData.shopId.manager.firstName" name="username">
+        <div class="col">
+          <select class="form-select" aria-label="Choisir un Categorie" name="category">
+            <option selected>Choisir une categorie</option>
+            <option *ngFor="let categorieId of categorieData" [value]="categorieId._id" class="text-black">{{categorieId.name}}</option>
+          </select>
         </div>
       </div>
     </form>

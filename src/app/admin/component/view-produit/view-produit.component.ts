@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProduitApiService } from '../../service/produit-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-produit',
@@ -10,23 +10,24 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewProduitComponent implements OnInit{
   produitData:any;
   idRoute:string|any;
+  loading:boolean=true;
 
   ngOnInit(): void {
     this.idRoute = this.activeRoute.snapshot.paramMap.get('id');
-    if (this.idRoute) {
-      // Appel de l'API avec this.idRoute
       this.apiProduit.getProduct(this.idRoute).subscribe(response => {
+        this.loading=false;
         this.produitData = response;
-        console.log(this.produitData);
-        console.log('Bien recu');
-
-      });
-    } else {
-      console.error("L'identifiant (this.idRoute) est vide ou non défini.");
-      console.log('Erreur');
-
-    }
+      },
+      (error=>{
+        console.error('Erreur lors de recupération de la valeur');
+        this.loading=false;
+      })
+      );
 
   }
-  constructor(private apiProduit:ProduitApiService,private activeRoute:ActivatedRoute){}
+  constructor(private apiProduit:ProduitApiService,private activeRoute:ActivatedRoute,private route:Router){}
+
+  navigatePrevious(){
+    this.route.navigate(['/boutique']);
+  }
 }

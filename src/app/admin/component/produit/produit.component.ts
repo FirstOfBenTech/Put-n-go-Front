@@ -17,6 +17,7 @@ export class ProduitComponent implements OnInit{
   categorieData:any
   userData:any;
   selectedFile:File|null=null;
+  loading:boolean=true;
 
   constructor(private route:Router,private formBuilder:FormBuilder,private apiProduit:ProduitApiService,private toastr:ToastrService){}
   ngOnInit(): void {
@@ -57,6 +58,7 @@ export class ProduitComponent implements OnInit{
   getCategorie(){
     this.apiProduit.getAllCategorie().subscribe(res=>{
       this.categorieData=res;
+      this.loading=false;
     })
   }
 

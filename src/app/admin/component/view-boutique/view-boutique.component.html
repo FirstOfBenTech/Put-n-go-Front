@@ -1,4 +1,4 @@
-<button class="btn btn-dark mt-2 mx-2"><a href="" routerLink="/mesboutiques" class="text-warning">Retour</a></button>
+<button class="btn btn-warning mt-2 mx-2" (click)="navigatePrevious()" style="height: 37px; width: 35px;"><i class="fa fa-reply"></i></button>
 <div class="card m-5">
   <div class="card-header bg-warning text-center">Afficher une Boutique</div>
   <div class="card-body">
@@ -10,7 +10,7 @@
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Adresse</span>
-          <input type="text" class="form-control" [(ngModel)]="boutiqueData.adresse" name="adresse">
+          <input type="text" class="form-control" [(ngModel)]="boutiqueData.adress" name="adresse">
         </div>
       </div>
       <div class="row mb-3">

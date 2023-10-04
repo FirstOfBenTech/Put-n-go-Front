@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit{
   }
 
   getAllUser(){
-    this.loginApi.getUser().subscribe(user=>{
+    this.loginApi.getAllUser().subscribe(user=>{
       this.userData=user;
     })
   }

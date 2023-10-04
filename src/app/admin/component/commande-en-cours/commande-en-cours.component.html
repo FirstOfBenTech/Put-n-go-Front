@@ -30,7 +30,7 @@
             </div>
             <div class="col">
               <select class="form-select" aria-label="Choisir un Client" formControlName="deliveryShop">
-                <option selected>Choisir une Boutique</option>
+                <option selected>Boutique de provenance</option>
                 <option *ngFor="let shop of shopData" [value]="shop._id" class="text-black">{{shop.manager.firstName}}</option>
               </select>
             </div>
@@ -44,6 +44,12 @@
               <span class="input-group-text bg-black text-warning">Remise</span>
               <input type="number" class="form-control" placeholder="Saisir l'avance" formControlName="discount">
             </div>
+          </div>
+          <div class="col">
+            <select class="form-select" aria-label="Choisir un Client" formControlName="shopId">
+              <option selected>Boutique de livraison</option>
+              <option *ngFor="let shop of shopData" [value]="shop._id" class="text-black">{{shop.manager.firstName}}</option>
+            </select>
           </div>
           <div class="row mb-3">
             <div formArrayName="products">

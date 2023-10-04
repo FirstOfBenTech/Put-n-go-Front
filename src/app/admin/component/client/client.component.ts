@@ -24,6 +24,7 @@ export class ClientComponent implements OnInit{
   pageNumber:number=1;
   pageSize:number=10;
   loading: boolean = true;
+  numero:number=0;
   //dataClient:undefined|client[];
 
   clientForm:FormGroup |any;
@@ -57,6 +58,7 @@ export class ClientComponent implements OnInit{
       this.toarst.success("Client Ajouté avec success!");
       this.clientForm.reset();
       this.getAllClient();
+      this.numero++;
     })}
 
   getAllClient(){

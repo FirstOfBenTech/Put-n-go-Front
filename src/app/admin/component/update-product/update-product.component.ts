@@ -11,12 +11,24 @@ import { ToastrService } from 'ngx-toastr';
 export class UpdateProductComponent  implements OnInit{
   idRoute:any;
   produitData:any;
+  loading:boolean=true;
+  shopData:any;
+  categorieData:any;
+
 
   ngOnInit(): void {
-    this.idRoute=this.activeRoute.snapshot.paramMap.get('_id');
-    this.apiProduit.getProduct(this.idRoute).subscribe(response=>{
-      this.produitData=response;
-     })
+    this.getShop();
+    this.getCategorie();
+    this.idRoute = this.activeRoute.snapshot.paramMap.get('id');
+    this.apiProduit.getProduct(this.idRoute).subscribe(response => {
+      this.loading=false;
+      this.produitData = response;
+    },
+    (error=>{
+      console.error('Erreur lors de recupération de la valeur');
+      this.loading=false;
+    })
+    );
   }
   constructor(private apiProduit:ProduitApiService,private activeRoute:ActivatedRoute,private toastr:ToastrService,private route:Router){}
 
@@ -31,4 +43,14 @@ export class UpdateProductComponent  implements OnInit{
       console.error('Erreur lors de la modification');
      })
    }
+   getShop(){
+    this.apiProduit.getAllBoutique().subscribe(res=>{
+    this.shopData=res;
+    })
+  }
+  getCategorie(){
+    this.apiProduit.getAllCategorie().subscribe(res=>{
+      this.categorieData=res;
+    })
+  }
 }

@@ -1,4 +1,4 @@
-<button class="btn btn-dark mt-2 mx-2"><a href="" routerLink="/mesboutiques" class="text-warning">Retour</a></button>
+<button class="btn btn-warning mt-2 mx-2" (click)="navigatePrevious()" style="height: 37px; width: 35px;"><i class="fa fa-reply"></i></button>
 <div class="card m-5">
   <div class="card-header bg-warning text-center">Afficher une Boutique</div>
   <div class="card-body">
@@ -14,35 +14,10 @@
         </div>
       </div>
       <div class="row mb-3">
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Crée le</span>
-          <input type="text" class="form-control" [(ngModel)]="boutiqueData.createdAt" name="createdAt">
-        </div>
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Modifier le</span>
-          <input type="text" class="form-control" [(ngModel)]="boutiqueData.updatedAt" name="updatedAt">
-        </div>
-
-      </div>
-      <div class="row mb-3">
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">FirstName</span>
-          <input type="text" class="form-control" [(ngModel)]="boutiqueData.manager.firstName" name="firstName">
-        </div>
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">LastName</span>
-          <input type="text" class="form-control" [(ngModel)]="boutiqueData.manager.lastName" name="lastName">
-        </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Phone</span>
-          <input type="text" class="form-control" [(ngModel)]="boutiqueData.manager.phone" name="phone">
-        </div>
-        <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Username</span>
-          <input type="text" class="form-control" [(ngModel)]="boutiqueData.manager.username" name="username">
-        </div>
+        <select class="form-select" aria-label="Choisir un Client" formControlName="manager">
+          <option selected>Choisir un Client</option>
+          <option *ngFor="let user of userData" value="{{user._id}}" class="text-black">{{user.firstName}} {{user.lastName}}</option>
+        </select>
       </div>
     </form>
   </div>

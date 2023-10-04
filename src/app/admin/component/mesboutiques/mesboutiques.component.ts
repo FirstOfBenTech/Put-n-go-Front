@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { mesboutiques } from '../../model/mesboutiquesmodel';
 import { LoginService } from '../../service/login.service';
 import { ActivatedRoute } from '@angular/router';
+import { ProduitApiService } from '../../service/produit-api.service';
 
 @Component({
   selector: 'app-mesboutiques',
@@ -21,7 +22,7 @@ export class MesboutiquesComponent implements OnInit{
   idRoute:any;
   categoryData:any;
 
-  constructor(private apiMesBoutiques:MesBoutiquesApiService,private toastr:ToastrService,private formBuilder:FormBuilder,private activeRoute:ActivatedRoute){}
+  constructor(private apiMesBoutiques:MesBoutiquesApiService,private toastr:ToastrService,private formBuilder:FormBuilder,private activeRoute:ActivatedRoute,private apiProduit:ProduitApiService){}
 
   ngOnInit(): void {
     this.getCategory();
@@ -63,7 +64,6 @@ export class MesboutiquesComponent implements OnInit{
       this.toastr.error('Une erreur est survenue');
       this.loading=false;
     })
-    console.log(this.mesBoutiquesData);
 
   }
   getAllUser(){

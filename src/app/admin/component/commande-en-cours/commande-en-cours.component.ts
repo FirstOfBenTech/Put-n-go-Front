@@ -34,9 +34,8 @@ constructor(private router:Router,private apiClient:ClientApiService,private for
       // this.getAllProduit();
       this.commandeEncoursForm = this.formBuilder.group({
         deliveryDate: ['', Validators.required],
-        deliveryShop: this.formBuilder.group({
-          id: ['', Validators.required]
-        }),
+        shopId:['',Validators.required],
+        deliveryShop:['',Validators.required],
         discount: [1, Validators.min(0)],
         advance: [1, Validators.min(0)],
         status: ['in-progress', Validators.required],
@@ -75,21 +74,11 @@ constructor(private router:Router,private apiClient:ClientApiService,private for
 
     })
   }
-  submitCommande(data: any) {
-    console.log(data.deliveryShop);
+
+  submitCommande(data:any) {
     console.log(data);
 
-    // this.apiCommande.addCommande(data).subscribe(res => {
-    //   this.toarst.success('Commande ajoutée avec succès !');
-    //   this.commandeEncoursForm.reset();
-    //   this.getAllCommande();
-    // });
-  }
-
-
-  submitCommand() {
     if (this.commandeEncoursForm.valid) {
-      const data = this.commandeEncoursForm.value;
       this.apiCommande.addCommande(data).subscribe(
         (res) => {
           this.toarst.success('Commande ajoutée avec succès !');

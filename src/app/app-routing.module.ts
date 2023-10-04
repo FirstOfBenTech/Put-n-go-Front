@@ -26,13 +26,11 @@ import { UpdateBoutiqueComponent } from './admin/component/update-boutique/updat
 import { UpdateBoutiqueCategorieComponent } from './admin/component/update-boutique-categorie/update-boutique-categorie.component';
 import { ProduitComponent } from './admin/component/produit/produit.component';
 import { UpdateProductComponent } from './admin/component/update-product/update-product.component';
-import { CommandeComponent } from './admin/component/commande/commande.component';
 import { ViewProduitComponent } from './admin/component/view-produit/view-produit.component';
+import { NotFoundComponent } from './admin/component/not-found/not-found.component';
+import { ProductShopComponent } from './admin/component/product-shop/product-shop.component';
 
 const routes: Routes = [
-  {
-    path:'',redirectTo:'login',pathMatch:'full'
-  },
   {
     path:'login',component:LoginComponent
   },
@@ -109,10 +107,13 @@ const routes: Routes = [
     path:'updateProduct/:id',component:UpdateProductComponent,canActivate:[authGuard]
   },
   {
-    path:'commande',component:CommandeComponent,canActivate:[authGuard]
+    path:'viewProduit/:id',component:ViewProduitComponent,canActivate:[authGuard]
   },
   {
-    path:'viewProduit/:id',component:ViewProduitComponent,canActivate:[authGuard]
+    path:'product/shop/:shopId',component:ProductShopComponent,canActivate:[authGuard]
+  },
+  {
+    path:'**',component:NotFoundComponent
   },
 ];
 

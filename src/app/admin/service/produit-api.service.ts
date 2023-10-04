@@ -37,8 +37,11 @@ export class ProduitApiService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
     return this.http.get<any>(`${this.apiUrl}/product/category/${category}`,{headers})
   }
-
-
+  getAllProduitShop(shopId: string){
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get<any>(`${this.apiUrl}/product/shop/${shopId}`,{headers})
+  }
   deleteProduct(id:string){
     const authToken = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
