@@ -13,6 +13,7 @@ export class SalaireComponent implements OnInit{
 
  constructor(private router:Router,private apiComp:ComptabiliteService,private formbuilder:FormBuilder,private toastr:ToastrService){}
  employeForm:FormGroup|any;
+ employeData:any;
  ngOnInit(): void {
   // this.getAllEmploye();
     this.employeForm=this.formbuilder.group({
@@ -25,10 +26,11 @@ export class SalaireComponent implements OnInit{
  navigatePrevious(){
   this.router.navigate(['/comptabilite'])
  }
- addCategorie(data:any){
+ 
+ addEmploye(data:any){
   this.apiComp.addEmploye(data).subscribe(res=>{
     this.employeForm.reset();
-    this.toastr.success('Categorie Ajouté avec success !');
+    this.toastr.success('Employe Ajouté avec success !');
     // this.getAllEmploye();
   },
 
@@ -37,6 +39,13 @@ export class SalaireComponent implements OnInit{
     console.error('Une erreur s est produit');
   });
 }
-getAllEmployee(){}
+getAllEmployee(){
+  this.apiComp.getAllEmploye().subscribe(res=>{
+    this.employeData=res
+  },
+    (error)=>{
+      this.toastr.error('Une erreur est survenue');
+    });
+}
 
 }
