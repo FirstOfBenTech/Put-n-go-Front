@@ -3,7 +3,6 @@
   flex-wrap:wrap;
 }
 .card{
-  max-width:11rem;
+  width:10rem;
   margin:auto;
-  min-width:9rem;
 }
