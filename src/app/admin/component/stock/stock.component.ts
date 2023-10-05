@@ -17,10 +17,12 @@ export class StockComponent implements OnInit{
   countCategorie:any;
   stockData:any;
   clientData:any;
+  loading:boolean=true;
 
   getAllProduct(){
     this.apiStock.getAllProduct().subscribe(res=>{
       this.stockData=res;
+      this.loading=false;
     })
   }
 }
