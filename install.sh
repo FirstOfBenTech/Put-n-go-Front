@@ -3,4 +3,5 @@ git pull
 docker compose down
 docker image rm put-n-go-frontend
 docker container rm putngo-front
-docker compose up -d
+docker compose up -d 
+
