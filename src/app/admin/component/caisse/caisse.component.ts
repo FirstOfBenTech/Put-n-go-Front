@@ -19,6 +19,7 @@ export class CaisseComponent implements OnInit{
   totalSortie:any;
   total:any;
   shopData:any;
+  loading:boolean=true;
 
   ngOnInit(): void {
     this.getCaisse();
@@ -46,6 +47,7 @@ export class CaisseComponent implements OnInit{
     this.apiCompt.getAllCaisse().subscribe(res=>{
       this.caisseData=res;
       this.calculTotal();
+      this.loading=false;
     });
   }
   calculTotal(){

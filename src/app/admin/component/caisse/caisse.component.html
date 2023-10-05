@@ -1,6 +1,5 @@
 <button class="btn btn-warning mt-2 mx-2" routerLink="/comptabilite" style="height: 37px; width: 35px;"><i class="fa fa-reply"></i></button>
 <form [formGroup]="caisseForm">
-<ng-container>
   <div class="m-3 table-responsive">
   <table class="table table-bordered border-none table-dark table-striped">
     <thead>
@@ -52,6 +51,7 @@
           </button>
         </td>
       </tr>
+      <ng-container *ngIf="caisseData?.length!=0">
       <tr class="" *ngFor="let caisse of caisseData" class="text-container">
         <td class="bg-gradient text">
           {{caisse.dateAjout}}
@@ -64,15 +64,25 @@
         <!-- <td class="bg-gradient">{{caisse.shopId}}</td> -->
         <td><button class="btn btn-danger bg-gradient" (click)="deleteCaisse(caisse._id)"><i class="fas fa-archive"></i></button></td>
       </tr>
+    </ng-container>
+    <ng-container *ngIf="caisseData?.length==0">
+      <div class="">
+        <p>La liste est vide !</p>
+      </div>
+    </ng-container>
+  <ng-container *ngIf="loading">
+    <div class="text-center text-warning">
+      <i class="fas fa-spinner fa-spin fa-3x"></i>
+    </div>
+  </ng-container>
     </tbody>
 
   </table>
 </div>
-</ng-container>
 </form>
-<div class="container d-flex justify-content-evenly">
-  <div class="text mx-3"><h4>TOTAL ENTREE: <strong class="text-warning">{{totalEntree}}</strong></h4></div>
-  <div class="text"><h4>TOTAL SORTIE: <strong class="text-warning">{{totalSortie}}</strong></h4></div>
+<div class="container d-flex flex-wrap">
+  <div class="text mx-2"><h4>TOTAL ENTREE: <strong class="text-warning">{{totalEntree}}</strong></h4></div>
+  <div class="text mx-2"><h4>TOTAL SORTIE: <strong class="text-warning">{{totalSortie}}</strong></h4></div>
 </div>
 <div class="text-center mt-3"><h2>TOTAL: <strong class="text-warning">{{total}}</strong></h2></div>
 
