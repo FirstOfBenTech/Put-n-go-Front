@@ -31,6 +31,7 @@ import { NotFoundComponent } from './admin/component/not-found/not-found.compone
 import { ProductShopComponent } from './admin/component/product-shop/product-shop.component';
 import { UpdateEmployeComponent } from './admin/component/update-employe/update-employe.component';
 import { AccueilComponent } from './admin/component/accueil/accueil.component';
+import { ViewClientComponent } from './admin/component/view-client/view-client.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,9 @@ const routes: Routes = [
   },
   {
     path:'client',component:ClientComponent,canActivate:[authGuard]
+  },
+  {
+    path:'viewClient/:id',component:ViewClientComponent,canActivate:[authGuard]
   },
   {
     path:'updateClient/:id',component:UpdateClientComponent,canActivate:[authGuard]

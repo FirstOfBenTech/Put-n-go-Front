@@ -36,22 +36,24 @@ export class ClientComponent implements OnInit{
       firstName:['',Validators.required],
       lastName:['',Validators.required],
       phone:['',Validators.required],
-      // adresse:['',Validators.required],
-      // mesureC:['',Validators.required],
-      // mesureE:['',Validators.required],
-      // mesureM:['',Validators.required],
-      // mesureLa:['',Validators.required],
-      // mesureLb:['',Validators.required],
-      // mesureS:['',Validators.required],
-      // mesureK:['',Validators.required],
-      // mesureF:['',Validators.required],
-      // mesureLp:['',Validators.required],
-      // mesureBr:['',Validators.required],
-      // mesureBa:['',Validators.required],
-      // mesurePoignee:['',Validators.required],
-      // mesureMollet:['',Validators.required]
+      mesures:this.formBuilder.group({
+      mesureC:['',Validators.required],
+      mesureE:['',Validators.required],
+      mesureM:['',Validators.required],
+      mesureLa:['',Validators.required],
+      mesureLb:['',Validators.required],
+      mesureS:['',Validators.required],
+      mesureK:['',Validators.required],
+      mesureF:['',Validators.required],
+      mesureLp:['',Validators.required],
+      mesureBr:['',Validators.required],
+      mesureBa:['',Validators.required],
+      mesurePoignee:['',Validators.required],
+      mesureMollet:['',Validators.required]
     })
-  }
+  });
+}
+
 
   submitClient(data:any){
     this.apiClient.addClient(data).subscribe(res=>{

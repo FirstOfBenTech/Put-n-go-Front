@@ -35,77 +35,72 @@
               <span class="input-group-text" id="basic-addon1">Phone</span>
               <input type="text" class="form-control" formControlName="phone" placeholder="phone">
             </div>
-            <!-- <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">Adresse</span>
-              <input type="text" class="form-control" formControlName="adresse" placeholder="Adresse">
-            </div> -->
           </div>
-          <!-- <div class="row mb-3">
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">C</span>
-              <input type="text" class="form-control" formControlName="mesureC" placeholder="Mesure C">
+           <div formGroupName="mesures">
+            <div class="row mb-3">
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">C</span>
+                <input type="text" class="form-control" formControlName="mesureC" placeholder="Mesure C">
+              </div>
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">E</span>
+                <input type="text" class="form-control" formControlName="mesureE" placeholder="Mesure E">
+              </div>
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">M</span>
+                <input type="text" class="form-control" formControlName="mesureM" placeholder="Mesure M">
+              </div>
             </div>
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">E</span>
-              <input type="text" class="form-control" formControlName="mesureE" placeholder="Mesure E">
+            <div class="row mb-3">
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">La</span>
+                <input type="text" class="form-control" formControlName="mesureLa" placeholder="Mesure La">
+              </div>
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">Lb</span>
+                <input type="text" class="form-control" formControlName="mesureLb" placeholder="Mesure Lb">
+              </div>
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">Lp</span>
+                <input type="text" class="form-control" formControlName="mesureLp" placeholder="Mesure Lp">
+              </div>
             </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">M</span>
-              <input type="text" class="form-control" formControlName="mesureM" placeholder="Mesure M">
+            <div class="row mb-3">
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">S</span>
+                <input type="text" class="form-control" formControlName="mesureS" placeholder="Mesure S">
+              </div>
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">K</span>
+                <input type="text" class="form-control" formControlName="mesureK" placeholder="Mesure K">
+              </div>
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">F</span>
+                <input type="text" class="form-control" formControlName="mesureF" placeholder="Mesure F">
+              </div>
             </div>
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">La</span>
-              <input type="text" class="form-control" formControlName="mesureLa" placeholder="Mesure La">
+            <div class="row mb-3">
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">Br</span>
+                <input type="text" class="form-control" formControlName="mesureBr" placeholder="Mesure Br">
+              </div>
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">Ba</span>
+                <input type="text" class="form-control" formControlName="mesureBa" placeholder="Mesure Ba">
+              </div>
+
             </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">Lb</span>
-              <input type="text" class="form-control" formControlName="mesureLb" placeholder="Mesure Lb">
+            <div class="row mb-3">
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">Poignée</span>
+                <input type="text" class="form-control" formControlName="mesurePoignee" placeholder="Mesure Poignée">
+              </div>
+              <div class="col input-group">
+                <span class="input-group-text" id="basic-addon1">Mollet</span>
+                <input type="text" class="form-control" formControlName="mesureMollet" placeholder="Mesure Mollet">
+              </div>
             </div>
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">S</span>
-              <input type="text" class="form-control" formControlName="mesureS" placeholder="Mesure S">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">K</span>
-              <input type="text" class="form-control" formControlName="mesureK" placeholder="Mesure K">
-            </div>
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">F</span>
-              <input type="text" class="form-control" formControlName="mesureF" placeholder="Mesure F">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">Lp</span>
-              <input type="text" class="form-control" formControlName="mesureLp" placeholder="Mesure Lp">
-            </div>
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">Br</span>
-              <input type="text" class="form-control" formControlName="mesureBr" placeholder="Mesure Br">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">Ba</span>
-              <input type="text" class="form-control" formControlName="mesureBa" placeholder="Mesure Ba">
-            </div>
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">Poignée</span>
-              <input type="text" class="form-control" formControlName="mesurePoignee" placeholder="Mesure Poignée">
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col input-group">
-              <span class="input-group-text" id="basic-addon1">Mollet</span>
-              <input type="text" class="form-control" formControlName="mesureMollet" placeholder="Mesure Mollet">
-            </div>
-          </div> -->
+           </div>
         </form>
       </div>
       <div class="modal-footer">
@@ -137,7 +132,8 @@
           <td>{{item.phone}}</td>
           <div class="d-flex justify-content-start">
             <td><button class="btn btn-warning mx-2" routerLink="/updateClient/{{item._id}}"><i class="fas fa-edit"></i></button></td>
-            <td><button class="btn btn-danger" (click)="deleteClient(item._id)"><i class="fas fa-archive"></i></button></td>
+            <td><button class="btn btn-success text-warning mx-2" routerLink="/viewClient/{{item._id}}"><i class="fa fa-eye"></i></button></td>
+            <td><button class="btn btn-danger mx-2" (click)="deleteClient(item._id)"><i class="fas fa-archive"></i></button></td>
           </div>
         </tr>
       </tbody>

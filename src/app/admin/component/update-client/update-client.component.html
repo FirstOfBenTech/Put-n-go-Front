@@ -1,4 +1,4 @@
-<button class="btn btn-dark mt-2"><a href="" routerLink="/client" class="text-warning">Retour</a></button>
+<button class="btn btn-warning mt-2 mx-2" routerLink="/client" style="height: 37px; width: 35px;"><i class="fa fa-reply"></i></button>
 <div class="card m-5">
   <div class="card-header">Modifier un Client</div>
   <div class="card-body">
@@ -18,71 +18,67 @@
           <span class="input-group-text" id="basic-addon1">N°Tel</span>
           <input type="text" class="form-control" [(ngModel)]="clientData.phone" name="numeroTel">
         </div>
-        <!-- <div class="col input-group">
-          <span class="input-group-text" id="basic-addon1">Adresse</span>
-          <input type="number" class="form-control" [(ngModel)]="clientData.adresse" name="adresse">
-        </div> -->
       </div>
-      <!-- <div class="row mb-3">
+      <div class="row mb-3">
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">C</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureC" name="mesureC">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureC" name="mesureC">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">E</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureE" name="mesureE">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureE" name="mesureE">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">M</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureM" name="mesureM">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureM" name="mesureM">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">La</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureLa" name="mesureLa">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureLa" name="mesureLa">
         </div>
-      </div> -->
-      <!-- <div class="row mb-3">
+      </div>
+       <div class="row mb-3">
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Lb</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureLb" name="mesureLb">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureLb" name="mesureLb">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">S</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureS" name="mesureS">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureS" name="mesureS">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">K</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureK" name="mesureK">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureK" name="mesureK">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">F</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureF" name="mesureF">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureF" name="mesureF">
         </div>
-      </div> -->
-      <!-- <div class="row mb-3">
+      </div>
+      <div class="row mb-3">
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Lp</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureLp" name="mesureLp">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureLp" name="mesureLp">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Br</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureBr" name="mesureBr">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureBr" name="mesureBr">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Ba</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureBa" name="mesureBa">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureBa" name="mesureBa">
         </div>
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Poignée</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesurePoignee" name="mesurePoignee">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesurePoignee" name="mesurePoignee">
         </div>
-      </div> -->
-      <!-- <div class="row mb-3" style="margin-left:35%; margin-right: 35%;">
+      </div>
+      <div class="row mb-3" style="margin-left:35%; margin-right: 35%;">
         <div class="col input-group">
           <span class="input-group-text" id="basic-addon1">Mollet</span>
-          <input type="text" class="form-control" [(ngModel)]="clientData.mesureMollet" name="mesureMollet">
+          <input type="text" class="form-control" [(ngModel)]="clientData.mesures.mesureMollet" name="mesureMollet">
         </div>
-      </div> -->
+      </div>
     </form>
   </div>
   <button type="button" class="btn btn-success mx-auto my-2" (click)="updateClient()">

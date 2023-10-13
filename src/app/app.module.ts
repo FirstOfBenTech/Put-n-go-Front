@@ -38,6 +38,7 @@ import { NotFoundComponent } from './admin/component/not-found/not-found.compone
 import { ProductShopComponent } from './admin/component/product-shop/product-shop.component';
 import { UpdateEmployeComponent } from './admin/component/update-employe/update-employe.component';
 import { AccueilComponent } from './admin/component/accueil/accueil.component';
+import { ViewClientComponent } from './admin/component/view-client/view-client.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { AccueilComponent } from './admin/component/accueil/accueil.component';
     ProductShopComponent,
     UpdateEmployeComponent,
     AccueilComponent,
+    ViewClientComponent,
   ],
   imports: [
     BrowserModule,
