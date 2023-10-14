@@ -39,6 +39,7 @@ import { ProductShopComponent } from './admin/component/product-shop/product-sho
 import { UpdateEmployeComponent } from './admin/component/update-employe/update-employe.component';
 import { AccueilComponent } from './admin/component/accueil/accueil.component';
 import { ViewClientComponent } from './admin/component/view-client/view-client.component';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ViewClientComponent } from './admin/component/view-client/view-client.c
     ViewClientComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     NgbModule,
     ReactiveFormsModule,
@@ -87,7 +89,7 @@ import { ViewClientComponent } from './admin/component/view-client/view-client.c
     NgbCarouselModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

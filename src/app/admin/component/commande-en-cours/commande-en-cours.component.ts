@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientApiService } from '../../service/client-api.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { client } from '../../model/clientmodel';
 import { CommandeApiService } from '../../service/commande-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProduitApiService } from '../../service/produit-api.service';
 import { produit } from '../../model/produitmodel';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-commande-en-cours',
@@ -24,7 +24,7 @@ export class CommandeEnCoursComponent implements OnInit{
   selectedProduit:produit| null=null;
   shopData:any;
 
-constructor(private router:Router,private apiClient:ClientApiService,private formBuilder:FormBuilder,private apiCommande:CommandeApiService,private toarst:ToastrService,private produitItem:ProduitApiService,private apiProduit:ProduitApiService){}
+constructor(private datepipe: DatePipe,private router:Router,private apiClient:ClientApiService,private formBuilder:FormBuilder,private apiCommande:CommandeApiService,private toarst:ToastrService,private produitItem:ProduitApiService,private apiProduit:ProduitApiService){}
 
   ngOnInit(): void {
     this.getProduit();
@@ -61,6 +61,7 @@ constructor(private router:Router,private apiClient:ClientApiService,private for
         (res) => {
           this.toarst.success('Commande ajoutée avec succès !');
           this.commandeEncoursForm.reset();
+          this.getAllCommande();
         },
         (error) => {
           this.toarst.error('Erreur lors de l\'ajout de la commande.');
@@ -74,13 +75,19 @@ constructor(private router:Router,private apiClient:ClientApiService,private for
   getAllCommande(){
     this.apiCommande.getAllCommande().subscribe(commandes=>{
       // this.commandeData=commandes.filter(commande=>commande.valide==false || commande.valide==null && commande.livre==false);
-      // this.nombreCommande=this.commandeData.length;
       // console.log(this.commandeData);
       this.commandeData=commandes;
+      this.nombreCommande=this.commandeData.length;
       console.log(this.commandeData);
 
     })
 
+  }
+
+  formatDate(updatedAt:string){
+    const date = new Date(updatedAt);
+    const formatDate =this.datepipe.transform(date, 'dd-MM-yyyy');
+    return formatDate;
   }
 
   removeProduct(index: number) {

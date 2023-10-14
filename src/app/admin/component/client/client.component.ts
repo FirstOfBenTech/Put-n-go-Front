@@ -25,6 +25,8 @@ export class ClientComponent implements OnInit{
   pageSize:number=10;
   loading: boolean = true;
   numero:number=0;
+  userData:any;
+  nombreUser:any;
   //dataClient:undefined|client[];
   showClients: boolean = true;
 
@@ -32,6 +34,7 @@ export class ClientComponent implements OnInit{
   constructor(private formBuilder:FormBuilder,private router:Router,private apiClient:ClientApiService,private route:ActivatedRoute,private toarst:ToastrService){}
 
   ngOnInit(): void {
+    this.getAllUser();
     this.getAllClient();
     this.clientForm=this.formBuilder.group({
       firstName:['',Validators.required],
@@ -69,6 +72,22 @@ export class ClientComponent implements OnInit{
       this.dataClient=res;
       this.nombreClient=this.dataClient.length;
       this.loading=false;
+    },
+     (error)=>{
+      this.loading=false;
+      this.toarst.error('Une erreur est survenue');
+      console.error('Erreur lors de l ajout');
+
+     }
+    )
+  }
+  getAllUser(){
+    this.apiClient.getAllUser().subscribe(res=>{
+      this.userData=res;
+      this.nombreUser=this.userData.length;
+      this.loading=false;
+      console.log(this.userData);
+
     },
      (error)=>{
       this.loading=false;

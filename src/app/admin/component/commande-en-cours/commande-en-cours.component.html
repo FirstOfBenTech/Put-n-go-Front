@@ -112,18 +112,23 @@
       <table class="table table-bordered border-warning table-dark table-striped">
         <thead>
           <tr>
+            <th scope="col" class="text-warning">Numero</th>
+            <th scope="col" class="text-warning">Date</th>
             <th scope="col" class="text-warning">Commande</th>
             <th scope="col" class="text-warning">Client</th>
             <th scope="col" class="text-warning">Avance</th>
             <th scope="col" class="text-warning">Total</th>
+            <th scope="col" colspan="2" class="text-warning">Options</th>
           </tr>
         </thead>
         <tbody>
           <ng-container *ngFor="let commande of commandeData">
             <tr>
+              <td>{{commande.orderNumber}}</td>
+              <td>{{formatDate(commande.updatedAt)}}</td>
               <td>
                 <ul>
-                  <li *ngFor="let produit of commande.products">
+                  <li *ngFor="let produit of commande.products" class="list-unstyled">
                     {{ produit.name }}
                   </li>
                 </ul>
