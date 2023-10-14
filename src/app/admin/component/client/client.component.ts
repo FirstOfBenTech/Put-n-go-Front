@@ -26,6 +26,7 @@ export class ClientComponent implements OnInit{
   loading: boolean = true;
   numero:number=0;
   //dataClient:undefined|client[];
+  showClients: boolean = true;
 
   clientForm:FormGroup |any;
   constructor(private formBuilder:FormBuilder,private router:Router,private apiClient:ClientApiService,private route:ActivatedRoute,private toarst:ToastrService){}

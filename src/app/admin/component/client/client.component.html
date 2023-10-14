@@ -2,10 +2,12 @@
 <button type="button" class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
   <i class="fas fa-user-plus p-1"></i>Client
 </button>
-<div class="d-flex">
-  <h5 class="text-white" style="margin-left: 10px;">Nombre de Clients :</h5><h5 class="text-warning px-1">{{nombreClient}}</h5>
+<div class="container mt-4">
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" [(ngModel)]="showClients" id="switchClientsUsers">
+    <label class="form-check-label text-warning" for="switchClientsUsers">Afficher les clients</label>
+  </div>
 </div>
-
 <!-- Modal Ajout Client-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -114,6 +116,10 @@
 </div>
 
 <!-----LISTER CLIENTS------------------>
+<div *ngIf="showClients">
+  <div class="d-flex">
+    <h5 class="text-white" style="margin-left: 10px;">Nombre de Clients :</h5><h5 class="text-warning px-1">{{nombreClient}}</h5>
+  </div>
   <ng-container *ngIf="dataClient?.length!=0">
     <div class="m-3 table-responsive">
     <table class="table table-bordered border-warning table-dark table-striped">
@@ -140,15 +146,20 @@
     </table>
   </div>
   </ng-container>
+</div>
   <ng-container *ngIf="loading">
     <div class="text-center text-warning">
       <i class="fas fa-spinner fa-spin fa-3x"></i>
     </div>
   </ng-container>
-
   <ng-container *ngIf="dataClient?.length==0">
      <h5 class="text-white mx-3">La liste est vide !</h5>
   </ng-container>
+
+  <div *ngIf="!showClients">
+    Liste des utilisateurs
+    <!-- Ajoutez ici le code pour afficher la liste des utilisateurs si nécessaire -->
+  </div>
 
 
 

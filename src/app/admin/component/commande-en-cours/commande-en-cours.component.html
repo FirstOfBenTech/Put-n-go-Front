@@ -29,7 +29,7 @@
               <input type="date" name="deliveryDate" id="" class="form-control" formControlName="deliveryDate">
             </div>
             <div class="col">
-              <select class="form-select" aria-label="Choisir un Client" formControlName="deliveryShop">
+              <select class="form-select" aria-label="Choisir une Boutique" formControlName="deliveryShop">
                 <option selected>Boutique de provenance</option>
                 <option *ngFor="let shop of shopData" [value]="shop._id" class="text-black">{{shop.manager.firstName}}</option>
               </select>
@@ -45,11 +45,19 @@
               <input type="number" class="form-control" placeholder="Saisir l'avance" formControlName="discount">
             </div>
           </div>
-          <div class="col mb-3">
-            <select class="form-select" aria-label="Choisir un Client" formControlName="shopId">
+          <div class="row mb-3">
+            <div class="col input-group">
+            <select class="form-select" aria-label="Choisir une Boutique" formControlName="owner">
               <option selected>Boutique de livraison</option>
               <option *ngFor="let shop of shopData" [value]="shop._id" class="text-black">{{shop.manager.firstName}}</option>
             </select>
+          </div>
+          <div class="col input-group">
+            <select class="form-select" aria-label="Choisir un Client" formControlName="shopId">
+              <option selected>Choisir un clent</option>
+              <option *ngFor="let client of clientData" [value]="client._id" class="text-black">{{client.firstName}} {{client.lastName}}</option>
+            </select>
+          </div>
           </div>
           <div class="row mb-3">
             <div formArrayName="products">
@@ -58,19 +66,25 @@
                   <h4>Produit {{ i + 1 }}</h4>
                   <div class="row mb-3">
                     <div class="col">
-                      <select class="form-select" aria-label="Choisir un Client" id="productName" formControlName="name">
+                      <select class="form-select" aria-label="Choisir un Client" id="productName" formControlName="originalProductId">
                         <option selected>Choisir un produit</option>
                         <option *ngFor="let produit of produitData" [value]="produit._id" class="text-black">{{produit.name}}</option>
                       </select>
                     </div>
                     <div class="col input-group">
                       <span class="input-group-text bg-black text-warning">Qnté</span>
-                      <input type="number" class="form-control" id="productQuantity" formControlName="quantity">
+                      <input type="number" class="form-control" id="productQuantity" formControlName="orderQuantity">
                     </div>
-                    <div class="col">
-                      <button type="button" class="btn btn-danger" (click)="removeProduct(i)"><i class="fas fa-archive"></i></button>
+                    <div class="row mb-3">
+                      <div class="col">
+                        <input type="text" class="form-control" [value]="getProductName(i)" formControlName="name">
+                      </div>
+                      <div class="col">
+                        <input type="number" class="form-control" placeholder="Prix du produit" formControlName="price" required>
+                      </div>
                     </div>
                   </div>
+
                 </div>
               </div>
               <button type="button" class="btn btn-success" (click)="addProduct()"><i class="fas fa-plus-circle p-1"></i>Produit</button>

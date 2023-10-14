@@ -39,15 +39,50 @@ constructor(private router:Router,private apiClient:ClientApiService,private for
         discount: [1, Validators.min(0)],
         advance: [1, Validators.min(0)],
         status: ['in-progress', Validators.required],
+        owner:['',Validators.required],
         products: this.formBuilder.array([])
       });
   }
   addProduct() {
     const productGroup = this.formBuilder.group({
-      name: ['', Validators.required],
-      quantity: [0, Validators.min(0)]
+      originalProductId: ['', Validators.required],
+      orderQuantity: [0, Validators.min(0)],
+      name:['',Validators.required],
+      price:['',Validators.required],
+      size:['',Validators.required]
     });
     this.products.push(productGroup);
+  }
+  // Vous pouvez ajouter cette fonction dans votre composant Angular
+getProductName(productIndex: number) {
+  const productId = this.products.at(productIndex).get('originalProductId')?.value;
+  const selectedProduct = this.produitData.find(product => product._id === productId);
+
+  // Assurez-vous de gérer le cas où le produit sélectionné n'est pas trouvé
+  if (selectedProduct) {
+    return selectedProduct.name;
+  }
+
+  return ''; // Vous pouvez retourner une valeur par défaut ou une chaîne vide en cas de non correspondance
+}
+
+
+  submitCommande(data:any) {
+    console.log(data);
+    if (this.commandeEncoursForm.valid) {
+      this.apiCommande.addCommande(data).subscribe(
+        (res) => {
+          this.toarst.success('Commande ajoutée avec succès !');
+          this.commandeEncoursForm.reset();
+        },
+        (error) => {
+          this.toarst.error('Erreur lors de l\'ajout de la commande.');
+          console.error(error);
+        }
+      );
+    } else {
+      this.toarst.error('Veuillez remplir correctement le formulaire de commande.');
+    }
   }
 
   removeProduct(index: number) {
@@ -74,24 +109,7 @@ constructor(private router:Router,private apiClient:ClientApiService,private for
     })
   }
 
-  submitCommande(data:any) {
-    console.log(data);
 
-    if (this.commandeEncoursForm.valid) {
-      this.apiCommande.addCommande(data).subscribe(
-        (res) => {
-          this.toarst.success('Commande ajoutée avec succès !');
-          this.commandeEncoursForm.reset();
-        },
-        (error) => {
-          this.toarst.error('Erreur lors de l\'ajout de la commande.');
-          console.error(error);
-        }
-      );
-    } else {
-      this.toarst.error('Veuillez remplir correctement le formulaire de commande.');
-    }
-  }
 
   // submitCommande(data:any){
   //   this.apiCommande.addCommande(data).subscribe(res=>{
@@ -121,9 +139,6 @@ navigatePage(selectOption:string):void{
     this.router.navigate(['/commandeLivre']);
   }
 }
-
-
-
 getAllClient(){
     this.apiClient.getClient().subscribe(res=>{
       this.clientData=res;
