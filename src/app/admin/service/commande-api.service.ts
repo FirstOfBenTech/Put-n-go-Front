@@ -19,10 +19,10 @@ export class CommandeApiService {
     return this.http.post<any>(`${this.apiUrl}/order`,data,{headers});
   }
 
-  getCommande():Observable<commande[]> {
+  getAllCommande():Observable<commande[]> {
     const authToken = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
-    return this.http.get<commande[]>(this.apiUrl,{headers});
+    return this.http.get<commande[]>(`${this.apiUrl}/order`,{headers});
   }
   getAllCategorie():Observable<any>{
     const authToken = localStorage.getItem('access_token');

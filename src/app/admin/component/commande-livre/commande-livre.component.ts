@@ -29,7 +29,7 @@ export class CommandeLivreComponent implements OnInit{
   }
 
   livrerCommande():void{
-    this.apiCommande.getCommande().subscribe(commandes=>{
+    this.apiCommande.getAllCommande().subscribe(commandes=>{
       this.commandeLivre=commandes.filter(commande=>commande.livre===true);
     });
   }

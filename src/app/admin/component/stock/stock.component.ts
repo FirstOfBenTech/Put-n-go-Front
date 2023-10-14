@@ -23,6 +23,8 @@ export class StockComponent implements OnInit{
     this.apiStock.getAllProduct().subscribe(res=>{
       this.stockData=res;
       this.loading=false;
+      console.log(this.stockData);
+
     })
   }
 }

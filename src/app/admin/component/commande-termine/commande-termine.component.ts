@@ -32,7 +32,7 @@ export class CommandeTermineComponent implements OnInit{
     }
   }
   commandeValider():void{
-    this.apiCommande.getCommande().subscribe(commandes=>{
+    this.apiCommande.getAllCommande().subscribe(commandes=>{
       this.commandeValide=commandes.filter(commande=>commande.valide==true && commande.livre==false);
     });
   }

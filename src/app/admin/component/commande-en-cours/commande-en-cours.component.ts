@@ -71,6 +71,17 @@ constructor(private router:Router,private apiClient:ClientApiService,private for
       this.toarst.error('Veuillez remplir correctement le formulaire de commande.');
     }
   }
+  getAllCommande(){
+    this.apiCommande.getAllCommande().subscribe(commandes=>{
+      // this.commandeData=commandes.filter(commande=>commande.valide==false || commande.valide==null && commande.livre==false);
+      // this.nombreCommande=this.commandeData.length;
+      // console.log(this.commandeData);
+      this.commandeData=commandes;
+      console.log(this.commandeData);
+
+    })
+
+  }
 
   removeProduct(index: number) {
     this.products.removeAt(index);
@@ -142,14 +153,7 @@ getAllClient(){
     const selected=event.target.value;
   }
 
-  getAllCommande(){
-    this.apiCommande.getCommande().subscribe(commandes=>{
-      this.commandeData=commandes.filter(commande=>commande.valide==false || commande.valide==null && commande.livre==false);
-      this.nombreCommande=this.commandeData.length;
-      console.log(this.commandeData);
 
-    })
-  }
   getClientName(clientId:number):string{
     const client=this.clientData.find(c => c.id === clientId);
     return client ? client.prenom: 'Inconnu';

@@ -104,41 +104,49 @@
 </div>
 
 
-
 <!----Liste des commandes----------------------->
-<!-- <ng-container>
-  <div class="m-3 table-responsive">
-    <table class="table table-bordered border-warning table-dark table-striped">
-      <thead>
-        <tr>
-          <th scope="col" class="text-warning">Date de Livraison</th>
-          <th scope="col"class="text-warning">Commande</th>
-          <th scope="col"class="text-warning">Couleur/Taille</th>
-          <th scope="col"class="text-warning">Client</th>
-          <th scope="col"class="text-warning">Avance</th>
-          <th scope="col" class="text-warning">Remise</th>
-          <th scope="col"class="text-warning">Total</th>
-          <th scope="col"class="text-warning" colspan="4">Options</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let shop of shopData">
-          <td>{{shop.name}}</td>
-          <td>{{shop.manager.firstName}}</td>
-          <td>400000</td> -->
-          <!-- <td><button class="btn btn-warning" routerLink="/updateCommande/{{commande.id}}"><i class="fas fa-edit"></i></button></td>
-          <td><button class="btn btn-danger" (click)="deleteCommande(commande.id)"><i class="fas fa-archive"></i></button></td>
-          <td><button class="btn btn-success" (click)="validerCommande(commande)"><i class="fa fa-thumbs-up"></i></button></td> -->
-        <!-- </tr>
-      </tbody>
-    </table>
-  </div>
+<button (click)="getAllCommande()">All</button>
+<ng-container *ngFor="let commande of commandeData">
+  <ng-container *ngIf="commandeData.length > 0">
+    <div class="m-3 table-responsive">
+      <table class="table table-bordered border-warning table-dark table-striped">
+        <thead>
+          <tr>
+            <th scope="col" class="text-warning">Commande</th>
+            <th scope="col" class="text-warning">Client</th>
+            <th scope="col" class="text-warning">Avance</th>
+            <th scope="col" class="text-warning">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let commande of commandeData">
+            <tr>
+              <td>
+                <ul>
+                  <li *ngFor="let produit of commande.products">
+                    {{ produit.name }}
+                  </li>
+                </ul>
+              </td>
+              <td>{{ commande.owner.firstName }} {{ commande.owner.lastName }}</td>
+              <td>{{ commande.advance }}</td>
+              <td>{{ commande.totalOrder }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+
 </ng-container>
 <ng-container *ngIf="commandeData.length==0">
   <div class="">
     <h5 class="mx-2 text-white">La liste est vide pas de commande en cours</h5>
   </div>
-</ng-container> -->
+</ng-container>
+
+
+
 
 
 
