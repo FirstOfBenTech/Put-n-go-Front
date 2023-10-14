@@ -47,24 +47,11 @@ constructor(private router:Router,private apiClient:ClientApiService,private for
     const productGroup = this.formBuilder.group({
       originalProductId: ['', Validators.required],
       orderQuantity: [0, Validators.min(0)],
-      name:['',Validators.required],
       price:['',Validators.required],
       size:['',Validators.required]
     });
     this.products.push(productGroup);
   }
-  // Vous pouvez ajouter cette fonction dans votre composant Angular
-getProductName(productIndex: number) {
-  const productId = this.products.at(productIndex).get('originalProductId')?.value;
-  const selectedProduct = this.produitData.find(product => product._id === productId);
-
-  // Assurez-vous de gérer le cas où le produit sélectionné n'est pas trouvé
-  if (selectedProduct) {
-    return selectedProduct.name;
-  }
-
-  return ''; // Vous pouvez retourner une valeur par défaut ou une chaîne vide en cas de non correspondance
-}
 
 
   submitCommande(data:any) {

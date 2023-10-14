@@ -75,15 +75,18 @@
                       <span class="input-group-text bg-black text-warning">Qnté</span>
                       <input type="number" class="form-control" id="productQuantity" formControlName="orderQuantity">
                     </div>
-                    <div class="row mb-3">
-                      <div class="col">
-                        <input type="text" class="form-control" [value]="getProductName(i)" formControlName="name">
+                  </div>
+                    <div class="row mb-3 mt-3">
+                      <div class="col input-group">
+                        <span class="input-group-text bg-black text-warning">Price</span>
+                        <input type="number" class="form-control" placeholder="Saisir le prix" formControlName="price">
                       </div>
-                      <div class="col">
-                        <input type="number" class="form-control" placeholder="Prix du produit" formControlName="price" required>
+                      <div class="col input-group">
+                        <span class="input-group-text bg-black text-warning">Size</span>
+                        <input type="text" class="form-control" placeholder="Saisir le size" formControlName="size">
                       </div>
                     </div>
-                  </div>
+
 
                 </div>
               </div>
