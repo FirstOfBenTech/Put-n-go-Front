@@ -8,6 +8,7 @@ export class commande
   valide:boolean=false;
   livre:boolean=false;
   total?:number;
+  status?:string;
 }
 
 export class modeleQuantite

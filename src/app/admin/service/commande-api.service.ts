@@ -13,7 +13,7 @@ export class CommandeApiService {
 
   constructor(private http:HttpClient) { }
 
-  addCommande(data:commande){
+  addCommande(data:any){
     const authToken = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
     return this.http.post<any>(`${this.apiUrl}/order`,data,{headers});
@@ -40,8 +40,11 @@ export class CommandeApiService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
     return this.http.get<any>(`${this.apiUrl}/shop`,{headers});
   }
-  validerCommande(commandeId:number):Observable<commande>{
-    return this.http.patch<commande>(this.apiUrl+'/'+commandeId,{valide:true});
+  
+  validerCommande(id:string):Observable<any>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.patch<any>(`${this.apiUrl}/order/${id}`,{status : 'ready'},{headers});
   }
 
   livreCommande(commandeId:number):Observable<commande>{
@@ -55,7 +58,20 @@ export class CommandeApiService {
   fetchData(commandeId:any){
     return this.http.get<commande>(this.apiUrl+"/"+commandeId);
   }
-  updateCommande(commande:commande,commandeId:any){
-    return this.http.put<commande>(this.apiUrl+"/"+commandeId,commande);
+
+  updateCommande(commande:any,id:any){
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.patch(`${this.apiUrl}/order/${id}`,commande,{headers});
+  }
+
+  updateStatus(commandeId: string, newStatus: string): Observable<any> {
+    const updateStatusUrl = `${this.apiUrl}/order/${commandeId}/status`;
+    const statusUpdate = { status: newStatus };
+    return this.http.put(updateStatusUrl, statusUpdate);
+  }
+  updateCommandeStatus(commandeId: string, newStatus: string) {
+    const updateCommande = { status: newStatus };
+    return this.http.put(`${this.apiUrl}/${commandeId}/status`, updateCommande);
   }
 }

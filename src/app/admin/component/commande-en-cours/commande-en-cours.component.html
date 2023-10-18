@@ -105,8 +105,8 @@
 
 
 <!----Liste des commandes----------------------->
-<button (click)="getAllCommande()">All</button>
-<ng-container *ngFor="let commande of commandeData">
+<!-- <button (click)="getAllCommande()">All</button> -->
+<!-- <ng-container *ngFor="let commande of commandeData">
   <ng-container *ngIf="commandeData.length > 0">
     <div class="m-3 table-responsive">
       <table class="table table-bordered border-warning table-dark table-striped">
@@ -118,13 +118,13 @@
             <th scope="col" class="text-warning">Client</th>
             <th scope="col" class="text-warning">Avance</th>
             <th scope="col" class="text-warning">Total</th>
-            <th scope="col" colspan="2" class="text-warning">Options</th>
+            <th scope="col" class="text-warning">Options</th>
           </tr>
         </thead>
         <tbody>
           <ng-container *ngFor="let commande of commandeData">
             <tr>
-              <td>{{commande.orderNumber}}</td>
+              <td>{{commande._id}}</td>
               <td>{{formatDate(commande.updatedAt)}}</td>
               <td>
                 <ul>
@@ -136,19 +136,60 @@
               <td>{{ commande.owner.firstName }} {{ commande.owner.lastName }}</td>
               <td>{{ commande.advance }}</td>
               <td>{{ commande.totalOrder }}</td>
+              <td><button class="btn btn-success mx-2" (click)="changeStatusToReady(commande)"><i class="fas fa-edit"></i></button></td>
             </tr>
           </ng-container>
         </tbody>
       </table>
     </div>
   </ng-container>
-
 </ng-container>
 <ng-container *ngIf="commandeData.length==0">
   <div class="">
     <h5 class="mx-2 text-white">La liste est vide pas de commande en cours</h5>
   </div>
+</ng-container> -->
+<ng-container *ngIf="commandeData.length > 0">
+  <div class="m-3 table-responsive">
+    <table class="table table-bordered border-warning table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col" class="text-warning">Numero</th>
+          <th scope="col" class="text-warning">Date</th>
+          <th scope="col" class="text-warning">Commande</th>
+          <th scope="col" class="text-warning">Client</th>
+          <th scope="col" class="text-warning">Avance</th>
+          <th scope="col" class="text-warning">Total</th>
+          <th scope="col" class="text-warning">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let commande of commandeData">
+          <td>{{commande.orderNumber}}</td>
+          <td>{{formatDate(commande.updatedAt)}}</td>
+          <td>
+            <ul>
+              <li *ngFor="let produit of commande.products" class="list-unstyled">
+                {{ produit.name }}
+              </li>
+            </ul>
+          </td>
+          <!-- <td>{{ commande.owner.firstName}}</td> -->
+          - <td>{{ commande.advance }}</td>
+          <td>{{ commande.totalOrder }}</td>
+          <td><button class="btn btn-success mx-2" (click)="validerCommande(commande)"><i class="fas fa-edit"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </ng-container>
+
+<ng-container *ngIf="commandeData.length == 0">
+  <div class="">
+    <h5 class="mx-2 text-white">La liste est vide, pas de commande en cours</h5>
+  </div>
+</ng-container>
+
 
 
 

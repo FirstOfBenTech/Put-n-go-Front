@@ -23,6 +23,11 @@ export class CommandeEnCoursComponent implements OnInit{
   prixModel:any;
   selectedProduit:produit| null=null;
   shopData:any;
+  clientData:any[]=[];
+  produitData:any[]=[];
+  commandeData:any[]=[];
+  productControl:any;
+  categoryData:any;
 
 constructor(private datepipe: DatePipe,private router:Router,private apiClient:ClientApiService,private formBuilder:FormBuilder,private apiCommande:CommandeApiService,private toarst:ToastrService,private produitItem:ProduitApiService,private apiProduit:ProduitApiService){}
 
@@ -74,14 +79,25 @@ constructor(private datepipe: DatePipe,private router:Router,private apiClient:C
   }
   getAllCommande(){
     this.apiCommande.getAllCommande().subscribe(commandes=>{
-      // this.commandeData=commandes.filter(commande=>commande.valide==false || commande.valide==null && commande.livre==false);
-      // console.log(this.commandeData);
-      this.commandeData=commandes;
+      this.commandeData=commandes.filter(commande=>commande.status ==='in-progress');
+      // this.commandeData=commandes;
       this.nombreCommande=this.commandeData.length;
       console.log(this.commandeData);
 
     })
 
+  }
+  validerCommande(commande:any){
+    const confirmation = confirm('Etes vous sûr de valider la commmande ?');
+    if(confirmation){
+      return this.apiCommande.validerCommande(commande._id).subscribe(()=>{
+      this.getAllCommande();
+      this.toarst.success('Commande Validé avec success !')
+      })
+    }
+    else{
+      return false;
+    }
   }
 
   formatDate(updatedAt:string){
@@ -113,24 +129,6 @@ constructor(private datepipe: DatePipe,private router:Router,private apiClient:C
 
     })
   }
-
-
-
-  // submitCommande(data:any){
-  //   this.apiCommande.addCommande(data).subscribe(res=>{
-  //     this.toarst.success('Commande ajouté avec success !');
-  //     this.commandeEncoursForm.reset();
-  //     this.getAllCommande();
-  //   })
-  // }
-
-
-clientData:any[]=[];
-produitData:any[]=[];
-commandeData:any[]=[];
-productControl:any;
-categoryData:any;
-
 
 selectOption:any;
 navigatePage(selectOption:string):void{
@@ -165,25 +163,9 @@ getAllClient(){
     const client=this.clientData.find(c => c.id === clientId);
     return client ? client.prenom: 'Inconnu';
   }
-  getModeleName(modeleId:number){
-  }
 
-  getTotal(){
 
-  }
 
-  validerCommande(commande:any){
-    const confirmation = confirm('Etes vous sûr de valider la commmande ?');
-    if(confirmation){
-      return this.apiCommande.validerCommande(commande.id).subscribe(()=>{
-      this.getAllCommande();
-      this.toarst.success('Commande Validé avec success !')
-      })
-    }
-    else{
-      return false;
-    }
-  }
   deleteCommande(commande:any){
     const confirmation = confirm('Voulez vous supprimez la commmande ?');
     if(confirmation){
