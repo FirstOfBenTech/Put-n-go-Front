@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommandeApiService } from '../../service/commande-api.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-commande-livre',
@@ -8,12 +9,15 @@ import { CommandeApiService } from '../../service/commande-api.service';
   styleUrls: ['./commande-livre.component.css']
 })
 export class CommandeLivreComponent implements OnInit{
+
  ngOnInit(): void {
-  this.livrerCommande();
+  this.getAllCommande();
  }
 
-  constructor(private router:Router,private apiCommande:CommandeApiService){}
+  constructor(private datepipe: DatePipe,private router:Router,private apiCommande:CommandeApiService){}
   commandeLivre:any;
+  nombreCommande:any;
+  loading: boolean = true;
 
   selectOption:any;
   navigatePage(selectOption:string):void{
@@ -27,11 +31,19 @@ export class CommandeLivreComponent implements OnInit{
       this.router.navigate(['/commandeLivre']);
     }
   }
-
-  livrerCommande():void{
+  getAllCommande(){
     this.apiCommande.getAllCommande().subscribe(commandes=>{
-      this.commandeLivre=commandes.filter(commande=>commande.livre===true);
-    });
+      this.commandeLivre=commandes.filter(commande=>commande.status ==='delivered');
+      // this.commandeData=commandes;
+      this.nombreCommande=this.commandeLivre.length;
+      this.loading=false;
+
+    })
+  }
+  formatDate(updatedAt:string){
+    const date = new Date(updatedAt);
+    const formatDate =this.datepipe.transform(date, 'dd-MM-yyyy');
+    return formatDate;
   }
 
 }

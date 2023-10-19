@@ -12,7 +12,7 @@ export class AppComponent {
 
   showsidebar=true;
   infoData:any;
-  title = 'couture';
+  title = 'Put & Go';
   status: boolean = false;
   clickEvent(){
     this.status = !this.status;

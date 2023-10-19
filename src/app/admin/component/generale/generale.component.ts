@@ -10,12 +10,11 @@ export class GeneraleComponent implements OnInit{
 
   totalEntree:number=0;
   totalSortie:number=0;
-   caisseData:any;
-   total:any;
-   salaire:any;
+  caisseData:any;
+  total:any;
+  salaire:any;
   ngOnInit(): void {
     this.getCaisse();
-
   }
   constructor(private apiCompt:ComptabiliteService){}
 
@@ -42,7 +41,7 @@ export class GeneraleComponent implements OnInit{
 
   comptaSalaire(){
     this.apiCompt.comptabiliteSalaire().subscribe(res=>{
-     this.salaire=res.totalSalary;
+    this.salaire=res.totalSalary;
     })
    }
 }

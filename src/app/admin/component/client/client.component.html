@@ -142,6 +142,7 @@
             <td><button class="btn btn-warning mx-2" routerLink="/updateClient/{{item._id}}"><i class="fas fa-edit"></i></button></td>
             <td><button class="btn btn-success text-warning mx-2" routerLink="/viewClient/{{item._id}}"><i class="fa fa-eye"></i></button></td>
             <td><button class="btn btn-danger mx-2" (click)="deleteClient(item._id)"><i class="fas fa-archive"></i></button></td>
+            <td><button class="btn btn-primary mx-2" (click)="makePDF(item)">Générer PDF</button></td>
           </div>
         </tr>
       </tbody>

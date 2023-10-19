@@ -40,23 +40,29 @@ export class CommandeApiService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
     return this.http.get<any>(`${this.apiUrl}/shop`,{headers});
   }
-  
+
   validerCommande(id:string):Observable<any>{
     const authToken = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
-    return this.http.patch<any>(`${this.apiUrl}/order/${id}`,{status : 'ready'},{headers});
+    return this.http.patch<any>(`${this.apiUrl}/order/status/${id}`,{status : 'ready'},{headers});
   }
 
-  livreCommande(commandeId:number):Observable<commande>{
-    return this.http.patch<commande>(this.apiUrl+'/'+commandeId,{livre:true});
+  livreCommande(id:number):Observable<commande>{
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.patch<any>(`${this.apiUrl}/order/status/${id}`,{status : 'delivered'},{headers});
   }
 
-  deleteCommande(commandeId:any){
-    return this.http.delete<commande>(this.apiUrl+'/'+commandeId);
+  deleteCommande(id:any){
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.delete<any>(`${this.apiUrl}/order/${id}`,{headers});
   }
 
-  fetchData(commandeId:any){
-    return this.http.get<commande>(this.apiUrl+"/"+commandeId);
+  fetchData(id:any){
+    const authToken = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${authToken}`);
+    return this.http.get(`${this.apiUrl}/order/${id}`,{headers});
   }
 
   updateCommande(commande:any,id:any){

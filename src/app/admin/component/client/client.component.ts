@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { client } from '../../model/clientmodel';
 import { ClientApiService } from '../../service/client-api.service';
 import { ToastrService } from 'ngx-toastr';
+import {jsPDF} from 'jspdf'
 
 @Component({
   selector: 'app-client',
@@ -112,5 +113,36 @@ export class ClientComponent implements OnInit{
     }
     return false;
 
+  }
+
+  makePDF(client: any) {
+    // Créez un nouveau document PDF.
+    const pdf = new jsPDF();
+
+    // Ajoutez une image de l'entreprise (assurez-vous d'avoir une image disponible).
+    const img = new Image();
+    img.src ="/assets/logo.jpg"// Remplacez le chemin par le chemin de votre image.
+    img.onload = () => {
+      pdf.addImage(img, 'PNG', 10, 10, 40, 40); // Position et dimensions de l'image.
+      pdf.text('Put & Go', 60, 30); // Nom de l'entreprise.
+
+      var doc = new jsPDF();
+      // doc.autoTable({
+      //   columnStyles: { europe: { halign: 'center' } }, // European countries centered
+      //   body: [
+      //     { europe: 'Sweden', america: 'Canada', asia: 'China' },
+      //     { europe: 'Norway', america: 'Mexico', asia: 'Japan' },
+      //   ],
+      //   columns: [
+      //     { header: 'Europe', dataKey: 'europe' },
+      //     { header: 'Asia', dataKey: 'asia' },
+      //   ],
+      // })
+
+
+
+      // Enregistrez le PDF avec un nom de fichier unique pour chaque client.
+      pdf.save(`Facture_Client_${client.firstName}.pdf`);
+    };
   }
 }

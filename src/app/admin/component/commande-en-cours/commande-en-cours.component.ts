@@ -28,6 +28,7 @@ export class CommandeEnCoursComponent implements OnInit{
   commandeData:any[]=[];
   productControl:any;
   categoryData:any;
+  loading: boolean = true;
 
 constructor(private datepipe: DatePipe,private router:Router,private apiClient:ClientApiService,private formBuilder:FormBuilder,private apiCommande:CommandeApiService,private toarst:ToastrService,private produitItem:ProduitApiService,private apiProduit:ProduitApiService){}
 
@@ -82,8 +83,7 @@ constructor(private datepipe: DatePipe,private router:Router,private apiClient:C
       this.commandeData=commandes.filter(commande=>commande.status ==='in-progress');
       // this.commandeData=commandes;
       this.nombreCommande=this.commandeData.length;
-      console.log(this.commandeData);
-
+      this.loading=false;
     })
 
   }
