@@ -200,7 +200,7 @@ getAllClient(){
       doc.text('Boutique : '+ commande.shopId.name,10,70);
       doc.setTextColor(255, 0, 0);
       doc.setFont('helvetica');
-      doc.setFontSize(10);
+      doc.setFontSize(12);
       commande.products.forEach((product:any) => {
         autoTable(doc, {
           head: [['Commande', 'Quantite', 'Price Unitaire', 'Total de la commande']],
@@ -230,7 +230,7 @@ getAllClient(){
     //       `${commande.owner.firstName} ${commande.owner.lastName}`,
     //       `${commande.advance}`,
     //       `${commande.totalOrder}`,
-      doc.save(`Facture_Client_${commande.orderNumber}.pdf`);
+      doc.save(`Facture_Commande_${commande.orderNumber}.pdf`);
     };
   }
 }
