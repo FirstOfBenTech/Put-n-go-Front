@@ -200,7 +200,7 @@ getAllClient(){
       doc.text('Boutique : '+ commande.shopId.name,10,70);
       doc.setTextColor(255, 0, 0);
       doc.setFont('helvetica');
-      doc.setFontSize(12);
+      doc.setFontSize(10);
       commande.products.forEach((product:any) => {
         autoTable(doc, {
           head: [['Commande', 'Quantite', 'Price Unitaire', 'Total de la commande']],
