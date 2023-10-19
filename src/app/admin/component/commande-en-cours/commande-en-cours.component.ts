@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ProduitApiService } from '../../service/produit-api.service';
 import { produit } from '../../model/produitmodel';
 import { DatePipe } from '@angular/common';
+import {jsPDF} from 'jspdf'
+import  autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-commande-en-cours',
@@ -29,6 +31,7 @@ export class CommandeEnCoursComponent implements OnInit{
   productControl:any;
   categoryData:any;
   loading: boolean = true;
+  totalPrixUnitaire:any;
 
 constructor(private datepipe: DatePipe,private router:Router,private apiClient:ClientApiService,private formBuilder:FormBuilder,private apiCommande:CommandeApiService,private toarst:ToastrService,private produitItem:ProduitApiService,private apiProduit:ProduitApiService){}
 
@@ -81,9 +84,10 @@ constructor(private datepipe: DatePipe,private router:Router,private apiClient:C
   getAllCommande(){
     this.apiCommande.getAllCommande().subscribe(commandes=>{
       this.commandeData=commandes.filter(commande=>commande.status ==='in-progress');
-      // this.commandeData=commandes;
       this.nombreCommande=this.commandeData.length;
       this.loading=false;
+      console.log(this.commandeData);
+
     })
 
   }
@@ -175,6 +179,59 @@ getAllClient(){
       })
     }
     return false;
+  }
+  calculTotal(){
+    this.totalPrixUnitaire=this.commandeData.reduce((acc:any,totalPrix:any)=>{
+      return acc * totalPrix.orderedQuantity*totalPrix.price;
+    },0);
+  }
+
+  makePDF(commande: any) {
+      var doc = new jsPDF();
+      autoTable(doc, { html: '#my-table' })
+    const img = new Image();
+    img.src ="/assets/logo.jpg"
+    img.onload = () => {
+      doc.addImage(img, 'PNG', 10, 10, 20, 20);
+      doc.text('Put & Go', 35, 20);
+      doc.text('Date : '+commande.createdAt,10,40,);
+      doc.text('Client : '+commande.owner.firstName + commande.owner.lastName,10,50);
+      doc.text('Telephone : '+ commande.owner.phone,10,60);
+      doc.text('Boutique : '+ commande.shopId.name,10,70);
+      doc.setTextColor(255, 0, 0);
+      doc.setFont('helvetica');
+      doc.setFontSize(12);
+      commande.products.forEach((product:any) => {
+        autoTable(doc, {
+          head: [['Commande', 'Quantite', 'Price Unitaire', 'Total de la commande']],
+          body: [[
+            `${product.name}`,
+            `${product.orderedQuantity}`,
+            `${product.price}`,
+             this.totalPrixUnitaire
+          ]],
+          startY: 80,
+        });
+        autoTable(doc,{
+          head:[['Avance','Remise']],
+          body:[[
+            `${commande.advance}`,
+            `${commande.discount}`,
+          ]],
+        })
+        autoTable(doc,{
+          head:[['Total']],
+          body:[[
+            `${commande.totalOrder}`,
+          ]],
+        })
+    });
+    // `${commande.orderNumber}`,
+    //       `${commande.owner.firstName} ${commande.owner.lastName}`,
+    //       `${commande.advance}`,
+    //       `${commande.totalOrder}`,
+      doc.save(`Facture_Client_${commande.orderNumber}.pdf`);
+    };
   }
 }
 
